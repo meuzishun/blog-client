@@ -1,12 +1,12 @@
 const apiRoot = import.meta.env.VITE_API_ROOT;
-const admin_auth = import.meta.env.VITE_TEST_ADMIN_AUTH;
+// const admin_auth = import.meta.env.VITE_TEST_ADMIN_AUTH;
 import { useFetch } from '../hooks/useFetch';
 
 export default function Posts() {
   const [data, error] = useFetch(apiRoot + '/posts', {
-    headers: {
-      Authorization: 'Bearer ' + admin_auth,
-    },
+    // headers: {
+    //   Authorization: 'Bearer ' + admin_auth,
+    // },
   });
 
   if (error) {
@@ -21,9 +21,11 @@ export default function Posts() {
     <>
       {data.posts.map((post) => (
         <div key={post._id}>
-          <h1>{post.title}</h1>
+          <h2>{post.title}</h2>
           <p>{post.content}</p>
-          <p>{post.author}</p>
+          <p>
+            {post.author.firstName} {post.author.lastName}
+          </p>
           <p>{post.timestamp}</p>
         </div>
       ))}
