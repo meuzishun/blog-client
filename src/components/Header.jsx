@@ -1,12 +1,13 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../App';
+import styles from './Header.module.css';
 
 function Header() {
   const { user } = useContext(UserContext);
 
   return (
-    <header>
+    <header className={styles.header}>
       <h1>Welcome {user ? `${user.firstName}...` : 'to the Blog'}</h1>
       <nav>
         <Link to='/'>Home</Link>

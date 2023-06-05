@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 3rem 0 1rem;
+  border-bottom: 1px solid grey;
+}
+
+.header h1 {
+}
+
+.header nav {
+  display: flex;
+  gap: 1rem;
+}
+
+.header nav a,
+.header nav a:active,
+.header nav a:visited {
+  color: black;
+  text-decoration: none;
+}
+
+/* Just for testing... */
+.header p {
+  font-size: 30px;
+}
