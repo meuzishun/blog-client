@@ -2,7 +2,11 @@ const apiRoot = import.meta.env.VITE_API_ROOT;
 import { useFetch } from '../hooks/useFetch';
 
 export default function Posts() {
-  const [data, error] = useFetch(apiRoot + '/posts', {});
+  const [data, error] = useFetch(apiRoot + '/posts', {
+    headers: {
+      Authorization: localStorage.getItem('token'),
+    },
+  });
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -21,14 +25,15 @@ export default function Posts() {
         return (
           <div key={post._id}>
             <h2>{post.title}</h2>
-            <p>{post.content}</p>
             <div className='details'>
               <p>
                 {post.author.firstName} {post.author.lastName}
               </p>
-              <p>{formattedDate[0]}</p>
-              <p>{formattedDate[1]}</p>
+              <p>
+                {formattedDate[0]}, {formattedDate[1]}
+              </p>
             </div>
+            <p>{post.content}</p>
           </div>
         );
       })}
