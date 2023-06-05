@@ -1,12 +1,14 @@
 .header {
+  font-family: Arial, Helvetica, sans-serif;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 3rem 0 1rem;
+  padding: 1rem;
   border-bottom: 1px solid grey;
 }
 
 .header h1 {
+  font-size: 3rem;
 }
 
 .header nav {
@@ -17,11 +19,12 @@
 .header nav a,
 .header nav a:active,
 .header nav a:visited {
+  font-size: 1.2rem;
   color: black;
   text-decoration: none;
 }
 
-/* Just for testing... */
-.header p {
+/* Just for testing... should NOT do anything */
+p {
   font-size: 30px;
 }

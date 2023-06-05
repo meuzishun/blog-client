@@ -1,4 +1,5 @@
 const apiRoot = import.meta.env.VITE_API_ROOT;
+import styles from './Posts.module.css';
 import { useFetch } from '../hooks/useFetch';
 
 export default function Posts() {
@@ -17,7 +18,7 @@ export default function Posts() {
   }
 
   return (
-    <>
+    <div className={styles.posts}>
       {data.posts.map((post) => {
         const formattedDate = new Date(post.timestamp)
           .toLocaleString()
@@ -27,7 +28,7 @@ export default function Posts() {
             <h2>{post.title}</h2>
             <div className='details'>
               <p>
-                {post.author.firstName} {post.author.lastName}
+                by {post.author.firstName} {post.author.lastName}
               </p>
               <p>
                 {formattedDate[0]}, {formattedDate[1]}
@@ -37,6 +38,6 @@ export default function Posts() {
           </div>
         );
       })}
-    </>
+    </div>
   );
 }

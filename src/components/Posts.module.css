@@ -1,0 +1,25 @@
+.posts {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.posts > div {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: 150px;
+  overflow: hidden;
+}
+
+.posts > div h2 {
+  font-size: 2rem;
+  text-decoration: underline;
+}
+
+.posts > div > p {
+  text-overflow: ellipsis ellipsis;
+}
