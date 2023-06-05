@@ -1,5 +1,6 @@
 const apiRoot = import.meta.env.VITE_API_ROOT;
 import FormInput from '../components/FormInput';
+import styles from './Register.module.css';
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../App';
@@ -30,7 +31,7 @@ function Login() {
   };
 
   return (
-    <>
+    <div className={styles.container}>
       <h2>Login Form</h2>
       <form onChange={handleFormChange} onSubmit={handleFormSubmit}>
         <FormInput type={'email'} id={'email'} name={'email'} label={'email'} />
@@ -42,7 +43,7 @@ function Login() {
         />
         <button>submit</button>
       </form>
-    </>
+    </div>
   );
 }
 

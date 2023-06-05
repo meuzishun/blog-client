@@ -1,5 +1,6 @@
 const apiRoot = import.meta.env.VITE_API_ROOT;
 import FormInput from '../components/FormInput';
+import styles from './Register.module.css';
 import { useState } from 'react';
 
 function Register() {
@@ -23,7 +24,7 @@ function Register() {
   };
 
   return (
-    <>
+    <div className={styles.container}>
       <h2>Register Form</h2>
       <form onChange={handleFormChange} onSubmit={handleFormSubmit}>
         <FormInput
@@ -47,7 +48,7 @@ function Register() {
         />
         <button>submit</button>
       </form>
-    </>
+    </div>
   );
 }
 

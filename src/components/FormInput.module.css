@@ -1,0 +1,14 @@
+.formInput {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.formInput > label {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.formInput > input {
+  padding: 0.5rem 0.5rem;
+}
