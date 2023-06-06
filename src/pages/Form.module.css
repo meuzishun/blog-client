@@ -22,3 +22,10 @@
   align-self: center;
   font-size: 1.25rem;
 }
+
+.linkContainer {
+  margin-top: 4rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}

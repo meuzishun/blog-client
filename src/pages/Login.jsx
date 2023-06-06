@@ -2,7 +2,7 @@ const apiRoot = import.meta.env.VITE_API_ROOT;
 import FormInput from '../components/FormInput';
 import styles from './Form.module.css';
 import { useState, useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../App';
 
 function Login() {
@@ -43,6 +43,10 @@ function Login() {
         />
         <button>submit</button>
       </form>
+      <div className={styles.linkContainer}>
+        <p>Don&apos;t have an account?</p>
+        <Link to='/register'>Sign up</Link>
+      </div>
     </div>
   );
 }

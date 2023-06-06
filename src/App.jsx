@@ -17,7 +17,7 @@ export default function App() {
         <Header />
         <Routes>
           <Route exact path='/' element={<Home />} />
-          <Route path='/post' element={<Post />} />
+          <Route path='/post/:postId' element={<Post />} />
           {!user ? (
             <>
               <Route path='/register' element={<Register />} />

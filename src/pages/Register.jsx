@@ -1,4 +1,5 @@
 const apiRoot = import.meta.env.VITE_API_ROOT;
+import { Link } from 'react-router-dom';
 import FormInput from '../components/FormInput';
 import styles from './Form.module.css';
 import { useState } from 'react';
@@ -48,6 +49,10 @@ function Register() {
         />
         <button>submit</button>
       </form>
+      <div className={styles.linkContainer}>
+        <p>Already have an account?</p>
+        <Link to='/login'>Login</Link>
+      </div>
     </div>
   );
 }

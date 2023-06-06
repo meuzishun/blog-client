@@ -1,8 +1,12 @@
 const apiRoot = import.meta.env.VITE_API_ROOT;
 import styles from './Posts.module.css';
+import { useContext } from 'react';
+import { UserContext } from '../App';
 import { useFetch } from '../hooks/useFetch';
+import { Link } from 'react-router-dom';
 
-export default function Posts() {
+function Posts() {
+  const { setUser } = useContext(UserContext);
   const [data, error] = useFetch(apiRoot + '/posts', {
     headers: {
       Authorization: localStorage.getItem('token'),
@@ -17,12 +21,21 @@ export default function Posts() {
     return <div>Loading...</div>;
   }
 
+  if (data.user) {
+    setUser(data.user);
+  }
+
   return (
     <div className={styles.posts}>
       {data.posts.map((post) => {
         const formattedDate = new Date(post.timestamp)
           .toLocaleString()
           .split(',');
+
+        if (!post) {
+          return null;
+        }
+
         return (
           <div key={post._id}>
             <h2>{post.title}</h2>
@@ -35,9 +48,12 @@ export default function Posts() {
               </p>
             </div>
             <p>{post.content}</p>
+            <Link to={'/post/' + post._id}>Continue reading</Link>
           </div>
         );
       })}
     </div>
   );
 }
+
+export default Posts;
