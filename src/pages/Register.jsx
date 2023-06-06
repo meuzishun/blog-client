@@ -1,6 +1,6 @@
 const apiRoot = import.meta.env.VITE_API_ROOT;
 import FormInput from '../components/FormInput';
-import styles from './Register.module.css';
+import styles from './Form.module.css';
 import { useState } from 'react';
 
 function Register() {
