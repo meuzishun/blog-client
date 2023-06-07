@@ -6,7 +6,7 @@ import { useFetch } from '../hooks/useFetch';
 import { Link } from 'react-router-dom';
 
 function Posts() {
-  const { setUser } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
   const [data, error] = useFetch(apiRoot + '/posts', {
     headers: {
       Authorization: localStorage.getItem('token'),
@@ -21,7 +21,7 @@ function Posts() {
     return <div>Loading...</div>;
   }
 
-  if (data.user) {
+  if (!user) {
     setUser(data.user);
   }
 

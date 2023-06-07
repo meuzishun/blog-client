@@ -1,10 +1,18 @@
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { UserContext } from '../App';
 import styles from './Header.module.css';
 
 function Header() {
-  const { user } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    console.log('Logging out...');
+    localStorage.clear();
+    setUser(null);
+    navigate('/');
+  };
 
   return (
     <header className={styles.header}>
@@ -17,7 +25,7 @@ function Header() {
             <Link to='login'>Login</Link>
           </>
         ) : (
-          <Link>Logout</Link>
+          <Link onClick={handleLogout}>Logout</Link>
         )}
       </nav>
     </header>
