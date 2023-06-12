@@ -24,8 +24,9 @@ function Login() {
       body: JSON.stringify(formState),
     });
     const data = await response.json();
-    console.log(data.user);
+    const userString = JSON.stringify(data.user);
     localStorage.setItem('token', data.jwt.token);
+    localStorage.setItem('user', userString);
     setUser(data.user);
     navigate('/');
   };

@@ -1,15 +1,21 @@
+import { createContext, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useState, createContext } from 'react';
 import Header from './components/Header';
 import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Post from './pages/Post';
 
-export const UserContext = createContext();
+export const UserContext = createContext(null);
 
 export default function App() {
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const userString = localStorage.getItem('user');
+    const user = JSON.parse(userString);
+    setUser(user);
+  }, []);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>

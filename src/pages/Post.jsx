@@ -1,9 +1,13 @@
 const apiRoot = import.meta.env.VITE_API_ROOT;
-import { useParams } from 'react-router-dom';
+import { useContext } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
+import { UserContext } from '../App';
 import { useFetch } from '../hooks/useFetch';
 import styles from './Post.module.css';
 
 function Post() {
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
   const params = useParams();
   const [data, error] = useFetch(apiRoot + '/posts/' + params.postId, {
     headers: {
@@ -19,7 +23,9 @@ function Post() {
     return <div>Loading...</div>;
   }
 
-  console.log(data);
+  const handleLoginClick = () => {
+    navigate('/login');
+  };
 
   const formattedDate = new Date(data.post.timestamp)
     .toLocaleString()
@@ -37,10 +43,10 @@ function Post() {
         </p>
       </div>
       <p>{data.post.content}</p>
-      {data.user ? (
+      {user ? (
         <button>Comment</button>
       ) : (
-        <button>Login to leave a comment</button>
+        <button onClick={handleLoginClick}>Login to leave a comment</button>
       )}
     </div>
   );
