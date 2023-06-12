@@ -2,9 +2,13 @@ const apiRoot = import.meta.env.VITE_API_ROOT;
 import { Link } from 'react-router-dom';
 import FormInput from '../components/FormInput';
 import styles from './Form.module.css';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../App';
 
 function Register() {
+  const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
   const [formState, setFormState] = useState({});
 
   const handleFormChange = (e) => {
@@ -20,8 +24,13 @@ function Register() {
       },
       body: JSON.stringify(formState),
     });
-    const json = await response.json();
-    console.log(json);
+    const data = await response.json();
+    console.log(data);
+    const userString = JSON.stringify(data.user);
+    localStorage.setItem('token', data.jwt.token);
+    localStorage.setItem('user', userString);
+    setUser(data.user);
+    navigate('/');
   };
 
   return (
