@@ -1,11 +1,12 @@
 const apiRoot = import.meta.env.VITE_API_ROOT;
-import { useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { UserContext } from '../App';
 import { useFetch } from '../hooks/useFetch';
 import styles from './Post.module.css';
 
 function Post() {
+  const [comments, setComments] = useState(null);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const params = useParams();
@@ -14,6 +15,23 @@ function Post() {
       Authorization: localStorage.getItem('token'),
     },
   });
+
+  useEffect(() => {
+    fetch(apiRoot + '/posts/' + params.postId + '/comments')
+      .then((res) => {
+        if (!res.ok) {
+          throw Error('something wrong, could not connect to resource');
+        }
+        return res.json();
+      })
+      .then((json) => {
+        console.log(json);
+        setComments(json.comments);
+      })
+      .catch((error) => {
+        console.warn(`Sorry an error occurred, due to ${error.message}`);
+      });
+  }, [data]);
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -48,6 +66,27 @@ function Post() {
       ) : (
         <button onClick={handleLoginClick}>Login to leave a comment</button>
       )}
+      <div>
+        {comments && comments.length > 0
+          ? comments.map((comment) => {
+              const formattedDate = new Date(comment.timestamp)
+                .toLocaleString()
+                .split(',');
+
+              return (
+                <div key={comment.id}>
+                  <p>
+                    {comment.author.firstName} {comment.author.lastName}:
+                  </p>
+                  <p>{comment.content}</p>
+                  <p>
+                    {formattedDate[0]}, {formattedDate[1]}
+                  </p>
+                </div>
+              );
+            })
+          : null}
+      </div>
     </div>
   );
 }
