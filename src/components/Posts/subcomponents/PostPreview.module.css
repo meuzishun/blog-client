@@ -1,0 +1,17 @@
+.post {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.post h2 {
+  font-size: 2rem;
+  text-decoration: underline;
+}
+
+.post p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
