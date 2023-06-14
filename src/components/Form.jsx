@@ -1,9 +1,14 @@
 const apiRoot = import.meta.env.VITE_API_ROOT;
 import PropTypes from 'prop-types';
 import FormInput from './FormInput';
-import { useState } from 'react';
+import styles from './Form.module.css';
+import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../App';
 
 function Form({ type }) {
+  const navigate = useNavigate();
+  const { setUser } = useContext(UserContext);
   const [formState, setFormState] = useState({});
 
   const handleFormChange = (e) => {
@@ -19,12 +24,20 @@ function Form({ type }) {
       },
       body: JSON.stringify(formState),
     });
-    const json = await response.json();
-    console.log(json);
+    const data = await response.json();
+    const userString = JSON.stringify(data.user);
+    localStorage.setItem('token', data.jwt.token);
+    localStorage.setItem('user', userString);
+    setUser(data.user);
+    navigate('/');
   };
 
   return (
-    <form onChange={handleFormChange} onSubmit={handleFormSubmit}>
+    <form
+      className={styles.form}
+      onChange={handleFormChange}
+      onSubmit={handleFormSubmit}
+    >
       {type === 'register' ? (
         <>
           <FormInput

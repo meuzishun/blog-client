@@ -11,18 +11,6 @@
   font-size: 2rem;
 }
 
-.container > form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.container button {
-  text-transform: capitalize;
-  align-self: center;
-  font-size: 1.25rem;
-}
-
 .linkContainer {
   margin-top: 4rem;
   display: flex;
