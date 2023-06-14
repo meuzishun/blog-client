@@ -1,6 +1,6 @@
 const apiRoot = import.meta.env.VITE_API_ROOT;
 import styles from './Posts.module.css';
-import { useFetch } from '../hooks/useFetch';
+import { useFetch } from '../../hooks/useFetch';
 import { Link } from 'react-router-dom';
 
 function Posts() {

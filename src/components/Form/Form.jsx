@@ -1,10 +1,10 @@
 const apiRoot = import.meta.env.VITE_API_ROOT;
 import PropTypes from 'prop-types';
-import FormInput from './FormInput';
+import FormInput from './subcomponents/FormInput/FormInput';
 import styles from './Form.module.css';
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../App';
+import { UserContext } from '../../App';
 
 function Form({ type }) {
   const navigate = useNavigate();
