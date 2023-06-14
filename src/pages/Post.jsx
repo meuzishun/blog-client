@@ -2,91 +2,83 @@ const apiRoot = import.meta.env.VITE_API_ROOT;
 import { useState, useContext, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { UserContext } from '../App';
-import { useFetch } from '../hooks/useFetch';
 import styles from './Post.module.css';
 
 function Post() {
+  const [post, setPost] = useState(null);
   const [comments, setComments] = useState(null);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const params = useParams();
-  const [data, error] = useFetch(apiRoot + '/posts/' + params.postId, {
-    headers: {
-      Authorization: localStorage.getItem('token'),
-    },
-  });
+
+  const getPost = async () => {
+    const response = await fetch(apiRoot + '/posts/' + params.postId, {
+      headers: {
+        Authorization: localStorage.getItem('token'),
+      },
+    });
+
+    const data = await response.json();
+    setPost(data.post);
+  };
+
+  const getComments = async () => {
+    const response = await fetch(
+      apiRoot + '/posts/' + params.postId + '/comments',
+      {
+        headers: {
+          Authorization: localStorage.getItem('token'),
+        },
+      }
+    );
+
+    const data = await response.json();
+    setComments(data.comments);
+  };
 
   useEffect(() => {
-    fetch(apiRoot + '/posts/' + params.postId + '/comments')
-      .then((res) => {
-        if (!res.ok) {
-          throw Error('something wrong, could not connect to resource');
-        }
-        return res.json();
-      })
-      .then((json) => {
-        console.log(json);
-        setComments(json.comments);
-      })
-      .catch((error) => {
-        console.warn(`Sorry an error occurred, due to ${error.message}`);
-      });
-  }, [data]);
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!data) {
-    return <div>Loading...</div>;
-  }
+    getPost();
+    if (user) {
+      getComments();
+    }
+  }, []);
 
   const handleLoginClick = () => {
     navigate('/login');
   };
 
-  const formattedDate = new Date(data.post.timestamp)
-    .toLocaleString()
-    .split(',');
-
-  return (
+  return !post ? null : (
     <div className={styles.post}>
-      <h2>{data.post.title}</h2>
+      <h2>{post.title}</h2>
       <div className={styles.details}>
         <p>
-          by {data.post.author.firstName} {data.post.author.lastName}
+          by {post.author.firstName} {post.author.lastName}
         </p>
-        <p>
-          {formattedDate[0]}, {formattedDate[1]}
-        </p>
+        <p>{new Date(post.timestamp).toLocaleString()}</p>
       </div>
-      <p>{data.post.content}</p>
-      {user ? (
-        <button>Comment</button>
-      ) : (
+      <p>{post.content}</p>
+      {!user ? (
         <button onClick={handleLoginClick}>Login to leave a comment</button>
+      ) : (
+        <>
+          <button>Comment</button>
+          <div>
+            {comments && comments.length > 0
+              ? comments.map((comment) => {
+                  return (
+                    <div key={comment.id}>
+                      <p>
+                        {comment.author.firstName} {comment.author.lastName}:
+                      </p>
+                      <p>{comment.content}</p>
+                      <p>{new Date(comment.timestamp).toLocaleString()}</p>
+                    </div>
+                  );
+                })
+              : null}
+          </div>
+        </>
       )}
-      <div>
-        {comments && comments.length > 0
-          ? comments.map((comment) => {
-              const formattedDate = new Date(comment.timestamp)
-                .toLocaleString()
-                .split(',');
-
-              return (
-                <div key={comment.id}>
-                  <p>
-                    {comment.author.firstName} {comment.author.lastName}:
-                  </p>
-                  <p>{comment.content}</p>
-                  <p>
-                    {formattedDate[0]}, {formattedDate[1]}
-                  </p>
-                </div>
-              );
-            })
-          : null}
-      </div>
     </div>
   );
 }
