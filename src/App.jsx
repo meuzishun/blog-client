@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Post from './pages/Post';
+import Footer from './components/Footer/Footer';
 
 export const UserContext = createContext(null);
 
@@ -32,6 +33,7 @@ export default function App() {
           ) : null}
         </Routes>
       </Router>
+      <Footer />
     </UserContext.Provider>
   );
 }
