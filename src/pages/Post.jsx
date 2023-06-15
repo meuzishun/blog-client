@@ -3,6 +3,7 @@ import { useState, useContext, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { UserContext } from '../App';
 import styles from './Post.module.css';
+import Comment from '../components/Comment/Comment';
 
 function Post() {
   const [post, setPost] = useState(null);
@@ -41,7 +42,7 @@ function Post() {
     if (user) {
       getComments();
     }
-  }, []);
+  }, [user]);
 
   const handleLoginClick = () => {
     navigate('/login');
@@ -61,19 +62,11 @@ function Post() {
         <button onClick={handleLoginClick}>Login to leave a comment</button>
       ) : (
         <>
-          <button>Comment</button>
+          <button>Add a Comment</button>
           <div>
             {comments && comments.length > 0
               ? comments.map((comment) => {
-                  return (
-                    <div key={comment.id}>
-                      <p>
-                        {comment.author.firstName} {comment.author.lastName}:
-                      </p>
-                      <p>{comment.content}</p>
-                      <p>{new Date(comment.timestamp).toLocaleString()}</p>
-                    </div>
-                  );
+                  return <Comment key={comment.id} comment={comment} />;
                 })
               : null}
           </div>

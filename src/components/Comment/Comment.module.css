@@ -1,0 +1,33 @@
+.comment {
+  /* display: flex;
+  gap: 0.5rem; */
+  display: grid;
+  grid-template-columns: max-content auto;
+  grid-template-rows: repeat(2, auto);
+  grid-template-areas:
+    'name content'
+    'time time';
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 1.25rem;
+}
+
+.comment .name {
+  grid-area: name;
+  background-color: #000;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+}
+
+.comment .content {
+  grid-area: content;
+  flex: 1;
+}
+
+.comment .timestamp {
+  grid-area: time;
+  font-size: 0.75rem;
+  text-align: right;
+}
