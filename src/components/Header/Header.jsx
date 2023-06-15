@@ -8,7 +8,8 @@ function Header() {
 
   return (
     <header className={styles.header}>
-      <h1>Welcome {user ? `${user.firstName}...` : 'to the Blog'}</h1>
+      <h1>Welcome to this Blog</h1>
+      {!user ? null : <p>Hello {user.firstName}!</p>}
       <Nav />
     </header>
   );
