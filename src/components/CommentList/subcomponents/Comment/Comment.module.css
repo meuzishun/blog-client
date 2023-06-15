@@ -1,6 +1,4 @@
 .comment {
-  /* display: flex;
-  gap: 0.5rem; */
   display: grid;
   grid-template-columns: max-content auto;
   grid-template-rows: repeat(2, auto);
@@ -14,11 +12,12 @@
 
 .comment .name {
   grid-area: name;
-  background-color: #000;
-  color: #fff;
-  padding: 0.25rem 0.5rem;
+  background-color: #f1f1f1;
+  color: #007bff;
+  padding: 0.5rem;
   border-radius: 0.25rem;
   font-size: 1rem;
+  font-weight: bold;
 }
 
 .comment .content {
@@ -30,4 +29,5 @@
   grid-area: time;
   font-size: 0.75rem;
   text-align: right;
+  color: #999999;
 }

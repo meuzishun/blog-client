@@ -1,0 +1,11 @@
+.firstCommentMessage {
+  text-align: center;
+  font-size: 2rem;
+}
+
+.commentList {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
