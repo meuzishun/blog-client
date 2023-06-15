@@ -1,9 +1,9 @@
 const apiRoot = import.meta.env.VITE_API_ROOT;
-import styles from './Posts.module.css';
+import styles from './PostList.module.css';
 import { useFetch } from '../../hooks/useFetch';
 import PostPreview from './subcomponents/PostPreview';
 
-function Posts() {
+function PostList() {
   const [data, error] = useFetch(apiRoot + '/posts');
 
   if (error) {
@@ -15,7 +15,7 @@ function Posts() {
   }
 
   return (
-    <div className={styles.posts}>
+    <div className={styles.postList}>
       {data.posts.map((post) => (
         <PostPreview key={post.id} post={post} />
       ))}
@@ -23,4 +23,4 @@ function Posts() {
   );
 }
 
-export default Posts;
+export default PostList;

@@ -1,9 +1,9 @@
-import Posts from '../components/Posts/Posts';
+import PostList from '../components/PostList/PostList';
 
 function Home() {
   return (
     <div>
-      <Posts />
+      <PostList />
     </div>
   );
 }
