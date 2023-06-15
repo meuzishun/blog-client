@@ -1,75 +1,39 @@
 const apiRoot = import.meta.env.VITE_API_ROOT;
-import { useState, useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { useFetch } from '../hooks/useFetch';
 import { UserContext } from '../App';
 import styles from './Post.module.css';
-import Comment from '../components/Comment/Comment';
+import SinglePost from '../components/SinglePost/SinglePost';
+import CommentList from '../components/CommentList/CommentList';
 
 function Post() {
-  const [post, setPost] = useState(null);
-  const [comments, setComments] = useState(null);
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
   const params = useParams();
+  const [data, error] = useFetch(apiRoot + '/posts/' + params.postId);
 
-  const getPost = async () => {
-    const response = await fetch(apiRoot + '/posts/' + params.postId, {
-      headers: {
-        Authorization: localStorage.getItem('token'),
-      },
-    });
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
-    const data = await response.json();
-    setPost(data.post);
-  };
-
-  const getComments = async () => {
-    const response = await fetch(
-      apiRoot + '/posts/' + params.postId + '/comments',
-      {
-        headers: {
-          Authorization: localStorage.getItem('token'),
-        },
-      }
-    );
-
-    const data = await response.json();
-    setComments(data.comments);
-  };
-
-  useEffect(() => {
-    getPost();
-    if (user) {
-      getComments();
-    }
-  }, [user]);
+  if (!data) {
+    return <div>Loading...</div>;
+  }
 
   const handleLoginClick = () => {
     navigate('/login');
   };
 
-  return !post ? null : (
+  return (
     <div className={styles.post}>
-      <h2>{post.title}</h2>
-      <div className={styles.details}>
-        <p>
-          by {post.author.firstName} {post.author.lastName}
-        </p>
-        <p>{new Date(post.timestamp).toLocaleString()}</p>
-      </div>
-      <p>{post.content}</p>
+      <SinglePost post={data.post} />
       {!user ? (
         <button onClick={handleLoginClick}>Login to leave a comment</button>
       ) : (
         <>
           <button>Add a Comment</button>
-          <div>
-            {comments && comments.length > 0
-              ? comments.map((comment) => {
-                  return <Comment key={comment.id} comment={comment} />;
-                })
-              : null}
-          </div>
+          <CommentList />
         </>
       )}
     </div>
