@@ -1,3 +1,4 @@
+const apiRoot = import.meta.env.VITE_API_ROOT;
 import { createContext, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
@@ -13,9 +14,29 @@ export default function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const userString = localStorage.getItem('user');
-    const user = JSON.parse(userString);
-    setUser(user);
+    const getUser = async () => {
+      const token = localStorage.getItem('token');
+
+      if (!token) {
+        setUser(null);
+        localStorage.clear();
+        return;
+      }
+
+      const response = await fetch(apiRoot + '/profile', {
+        method: 'GET',
+        headers: {
+          Authorization: token,
+        },
+      });
+
+      const data = await response.json();
+      const userString = JSON.stringify(data.user);
+      localStorage.setItem('user', userString);
+      setUser(data.user);
+    };
+
+    getUser();
   }, []);
 
   return (
