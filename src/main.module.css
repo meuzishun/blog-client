@@ -89,6 +89,7 @@ video {
   border: 0;
   font-size: 100%;
   font: inherit;
+  font-family: Arial, Helvetica, sans-serif;
   vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
@@ -126,4 +127,56 @@ q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0;
+}
+
+/* Global styles */
+:root {
+  --dark-font-color: #222;
+  --light-font-color: #eee;
+  --dark-bg-color: #4f4f4f;
+  --light-bg-color: #eee;
+}
+
+* {
+  /* background-color: var(--dark-bg-color); */
+  color: var(--light-font-color);
+}
+
+button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  background-color: #000;
+}
+
+button:hover,
+a:hover {
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  padding: 0.15rem 0;
+  border-bottom: 1px solid transparent;
+}
+
+a:hover {
+  border-bottom: 1px solid var(--light-font-color);
+}
+
+label {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+input {
+  padding: 0.5rem 0.5rem;
+  font-size: 1.2rem;
+  border: 1px solid var(--light-font-color);
+  transition: background-color 150ms ease-in-out;
+}
+
+input:focus {
+  outline: none;
+  background-color: #000;
 }

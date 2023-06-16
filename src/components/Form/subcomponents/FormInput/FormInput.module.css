@@ -4,11 +4,19 @@
   gap: 0.25rem;
 }
 
-.formInput > label {
+/* .formInput > label {
   text-transform: uppercase;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 .formInput > input {
   padding: 0.5rem 0.5rem;
+  font-size: 1.2rem;
+  border: 1px solid var(--light-font-color);
+  transition: background-color 150ms ease-in-out;
 }
+
+.formInput > input:focus {
+  outline: none;
+  background-color: #000;
+} */

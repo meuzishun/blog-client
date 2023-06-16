@@ -7,6 +7,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Post from './pages/Post';
 import Footer from './components/Footer/Footer';
+import styles from './App.module.css';
 
 export const UserContext = createContext(null);
 
@@ -40,21 +41,23 @@ export default function App() {
   }, []);
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
-      <Router>
-        <Header />
-        <Routes>
-          <Route exact path='/' element={<Home />} />
-          <Route path='/post/:postId' element={<Post />} />
-          {!user ? (
-            <>
-              <Route path='/register' element={<Register />} />
-              <Route path='/login' element={<Login />} />
-            </>
-          ) : null}
-        </Routes>
-      </Router>
-      <Footer />
-    </UserContext.Provider>
+    <div className={styles.app}>
+      <UserContext.Provider value={{ user, setUser }}>
+        <Router>
+          <Header />
+          <Routes>
+            <Route exact path='/' element={<Home />} />
+            <Route path='/post/:postId' element={<Post />} />
+            {!user ? (
+              <>
+                <Route path='/register' element={<Register />} />
+                <Route path='/login' element={<Login />} />
+              </>
+            ) : null}
+          </Routes>
+        </Router>
+        <Footer />
+      </UserContext.Provider>
+    </div>
   );
 }

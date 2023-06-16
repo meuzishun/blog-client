@@ -12,7 +12,7 @@ function PostPreview({ post }) {
   return (
     <div className={styles.post}>
       <h2>{post.title}</h2>
-      <div className='details'>
+      <div className={styles.details}>
         <p>
           by {post.author.firstName} {post.author.lastName}
         </p>

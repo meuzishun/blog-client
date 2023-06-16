@@ -1,12 +1,16 @@
 .commentForm {
   display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  /* flex-direction: column; */
 }
 
 .commentForm input {
-  flex: 1;
-  font-size: 1.25rem;
+  width: 100%;
 }
 
 .commentForm button {
   text-transform: capitalize;
+  align-self: center;
 }
