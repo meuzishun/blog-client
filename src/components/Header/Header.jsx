@@ -8,7 +8,7 @@ function Header() {
 
   return (
     <header className={styles.header}>
-      <h1>Welcome to this Blog</h1>
+      <h1>You&apos;re Gonna Make Me Blog</h1>
       {!user ? null : <p>Hello {user.firstName}!</p>}
       <Nav />
     </header>
