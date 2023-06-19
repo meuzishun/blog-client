@@ -2,7 +2,7 @@ const apiRoot = import.meta.env.VITE_API_ROOT;
 import PropTypes from 'prop-types';
 import FormInput from './subcomponents/FormInput/FormInput';
 import styles from './Form.module.css';
-import { useState, useContext } from 'react';
+import { useState, useContext, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../App';
 
@@ -10,6 +10,8 @@ function Form({ type }) {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
   const [formState, setFormState] = useState({});
+  const firstNameInputRef = useRef(null);
+  const emailInputRef = useRef(null);
 
   const handleFormChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
@@ -32,6 +34,15 @@ function Form({ type }) {
     navigate('/home');
   };
 
+  useEffect(() => {
+    if (type === 'register' && firstNameInputRef.current) {
+      firstNameInputRef.current.focus();
+    }
+    if (type === 'login' && emailInputRef.current) {
+      emailInputRef.current.focus();
+    }
+  }, []);
+
   return (
     <form
       className={styles.form}
@@ -45,6 +56,7 @@ function Form({ type }) {
             id={'firstName'}
             name={'firstName'}
             label={'first name'}
+            forwardedRef={firstNameInputRef}
           />
           <FormInput
             type={'text'}
@@ -54,7 +66,13 @@ function Form({ type }) {
           />
         </>
       ) : null}
-      <FormInput type={'email'} id={'email'} name={'email'} label={'email'} />
+      <FormInput
+        type={'email'}
+        id={'email'}
+        name={'email'}
+        label={'email'}
+        forwardedRef={emailInputRef}
+      />
       <FormInput
         type={'password'}
         id={'password'}

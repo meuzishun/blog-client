@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import styles from './FormInput.module.css';
 import { useState } from 'react';
 
-function FormInput({ type, id, name, label }) {
+function FormInput({ type, id, name, label, forwardedRef }) {
   const [inputState, setInputState] = useState('');
 
   const handleInputChange = (e) => {
@@ -18,6 +18,7 @@ function FormInput({ type, id, name, label }) {
         name={name}
         defaultValue={inputState}
         onChange={handleInputChange}
+        ref={forwardedRef}
       />
     </div>
   );
@@ -28,6 +29,7 @@ FormInput.propTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
+  forwardedRef: PropTypes.object,
 };
 
 export default FormInput;
