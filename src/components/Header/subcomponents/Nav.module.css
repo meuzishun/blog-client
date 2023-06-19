@@ -6,7 +6,12 @@
 .nav a,
 .nav a:active,
 .nav a:visited {
+  font-family: monospace;
   font-size: 1.2rem;
   color: var(--light-font-color);
   text-decoration: none;
+}
+
+.nav a:hover {
+  border-bottom: 1px solid var(--light-font-color);
 }

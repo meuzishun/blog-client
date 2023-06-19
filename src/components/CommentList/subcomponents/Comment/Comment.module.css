@@ -6,28 +6,29 @@
     'name content'
     'time time';
   gap: 0.5rem;
+  padding: 0.5rem;
   align-items: center;
   font-size: 1.25rem;
+  background-color: var(--light-bg-color);
 }
 
 .comment .name {
   grid-area: name;
-  background-color: #f1f1f1;
-  color: #007bff;
-  padding: 0.5rem;
   border-radius: 0.25rem;
-  font-size: 1rem;
+  font-size: 2rem;
   font-weight: bold;
+  font-family: 'Handwritten';
+  margin-top: 0.75rem;
 }
 
 .comment .content {
   grid-area: content;
-  flex: 1;
+  font-family: monospace;
 }
 
 .comment .timestamp {
   grid-area: time;
   font-size: 0.75rem;
   text-align: right;
-  color: #999999;
+  font-family: monospace;
 }

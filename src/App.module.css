@@ -1,7 +1,10 @@
 .app {
   min-height: 100vh;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  /* display: grid;
   grid-template-rows: max-content 1fr max-content;
-  grid-template-columns: 100%;
-  background-color: var(--dark-bg-color);
+  grid-template-columns: 100%; */
+  /* background-color: var(--dark-bg-color); */
+  background-image: url('./images/natural-wooden-background.jpg');
 }

@@ -5,7 +5,7 @@ function Comment({ comment }) {
   return (
     <div className={styles.comment}>
       <p className={styles.name}>
-        {comment.author.firstName} {comment.author.lastName}:
+        {comment.author.firstName} {comment.author.lastName} -
       </p>
       <p className={styles.content}>{comment.content}</p>
       <p className={styles.timestamp}>

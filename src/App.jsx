@@ -1,6 +1,7 @@
 const apiRoot = import.meta.env.VITE_API_ROOT;
 import { createContext, useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Welcome from './pages/Welcome';
 import Header from './components/Header/Header';
 import Home from './pages/Home';
 import Register from './pages/Register';
@@ -46,7 +47,8 @@ export default function App() {
         <Router>
           <Header />
           <Routes>
-            <Route exact path='/' element={<Home />} />
+            <Route path='/' element={<Welcome />} />
+            <Route path='/home' element={<Home />} />
             <Route path='/post/:postId' element={<Post />} />
             {!user ? (
               <>

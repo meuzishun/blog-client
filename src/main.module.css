@@ -135,18 +135,25 @@ table {
   --light-font-color: #eee;
   --dark-bg-color: #4f4f4f;
   --light-bg-color: #eee;
+  --shadow: 0.25rem 0.5rem 0.5rem #565656;
+}
+
+@font-face {
+  font-family: 'Handwritten';
+  src: url('./fonts/Zeyada/Zeyada-Regular.ttf');
 }
 
 * {
   /* background-color: var(--dark-bg-color); */
-  color: var(--light-font-color);
+  color: var(--dark-font-color);
 }
 
 button {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 0.25rem;
-  background-color: #000;
+  font-family: monospace;
+  /* background-color: #000; */
 }
 
 button:hover,
@@ -161,22 +168,23 @@ a {
 }
 
 a:hover {
-  border-bottom: 1px solid var(--light-font-color);
+  border-bottom: 1px solid var(--dark-font-color);
 }
 
 label {
   text-transform: uppercase;
   font-size: 0.8rem;
+  font-family: monospace;
 }
 
 input {
   padding: 0.5rem 0.5rem;
   font-size: 1.2rem;
+  font-family: monospace;
   border: 1px solid var(--light-font-color);
   transition: background-color 150ms ease-in-out;
 }
 
 input:focus {
   outline: none;
-  background-color: #000;
 }

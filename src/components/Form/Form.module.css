@@ -10,4 +10,5 @@
   align-self: center;
   font-size: 1.25rem;
   background-color: rgb(0, 89, 255);
+  color: var(--light-font-color);
 }

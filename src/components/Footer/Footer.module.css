@@ -3,5 +3,12 @@
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  border-top: 1px solid var(--light-font-color);
+  /* border-top: 1px solid var(--light-font-color); */
+  background-color: #00000048;
+  backdrop-filter: blur(0.25rem);
+}
+
+.footer p {
+  color: var(--light-font-color);
+  font-family: monospace;
 }
