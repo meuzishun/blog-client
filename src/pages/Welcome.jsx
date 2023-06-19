@@ -9,7 +9,7 @@ function Welcome() {
           <p>Welcome to</p>
           <h1>You&apos;re Gonna Make Me Blog</h1>
           <p className={styles.subheading}>
-            Read rants about topics you want to pretend you care about
+            Read rants about topics you pretend to care about
           </p>
         </header>
         <nav>
