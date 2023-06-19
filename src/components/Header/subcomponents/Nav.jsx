@@ -16,7 +16,7 @@ function Nav() {
 
   return (
     <nav className={styles.nav}>
-      <Link to='/'>Home</Link>
+      <Link to='/home'>Home</Link>
       {!user ? (
         <>
           <Link to='register'>Register</Link>
