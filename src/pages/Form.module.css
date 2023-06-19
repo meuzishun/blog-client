@@ -1,11 +1,11 @@
 .container {
-  width: 100%;
+  /* width: 85vw; */
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  max-width: 300px;
-  margin: 2rem auto;
+  /* max-width: 300px; */
+  margin: clamp(0.8rem, 2vw, 2rem) auto;
   padding: 2rem;
   font-family: monospace;
   background-color: var(--light-bg-color);
@@ -13,7 +13,7 @@
 
 .container > h2 {
   font-family: monospace;
-  font-size: 2rem;
+  font-size: clamp(1.25rem, 3vw, 2rem);
   margin-bottom: 2rem;
 }
 
@@ -32,4 +32,10 @@
 .linkContainer * {
   font-family: monospace;
   font-size: 1rem;
+}
+
+@media (max-width: 600px) {
+  .linkContainer {
+    flex-direction: column;
+  }
 }

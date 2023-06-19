@@ -179,10 +179,11 @@ label {
 
 input {
   padding: 0.5rem 0.5rem;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 3vw, 1.2rem);
   font-family: monospace;
-  border: 1px solid var(--light-font-color);
-  transition: background-color 150ms ease-in-out;
+  /* border: 1px solid var(--light-font-color); */
+  border: none;
+  /* transition: background-color 150ms ease-in-out; */
 }
 
 input:focus {
