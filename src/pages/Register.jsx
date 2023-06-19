@@ -5,7 +5,7 @@ import Form from '../components/Form/Form';
 function Register() {
   return (
     <div className={styles.container}>
-      <h2>Register Form</h2>
+      <h2>Register</h2>
       <Form type='register' />
       <div className={styles.linkContainer}>
         <p>Already have an account?</p>

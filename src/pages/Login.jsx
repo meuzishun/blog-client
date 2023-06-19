@@ -5,7 +5,7 @@ import Form from '../components/Form/Form';
 function Login() {
   return (
     <div className={styles.container}>
-      <h2>Login Form</h2>
+      <h2>Login</h2>
       <Form type='login' />
       <div className={styles.linkContainer}>
         <p>Don&apos;t have an account?</p>
