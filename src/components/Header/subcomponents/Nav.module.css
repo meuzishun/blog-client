@@ -1,5 +1,8 @@
 .nav {
+  /* flex: 1; */
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -7,7 +10,7 @@
 .nav a:active,
 .nav a:visited {
   font-family: monospace;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
   color: var(--light-font-color);
   text-decoration: none;
 }

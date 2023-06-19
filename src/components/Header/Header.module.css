@@ -2,8 +2,9 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
   padding: 1rem;
-  gap: 3rem;
+  /* gap: 3rem; */
   background-color: #00000048;
   backdrop-filter: blur(0.25rem);
 }
@@ -11,6 +12,8 @@
 .header h1 {
   font-family: 'Handwritten';
   color: var(--light-font-color);
+  font-size: clamp(2rem, 4vw, 4rem);
+  text-align: center;
 }
 
 .header p {
@@ -19,4 +22,10 @@
   color: var(--light-font-color);
   font-size: 2rem;
   font-family: 'Handwritten';
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+  }
 }
