@@ -146,6 +146,7 @@ table {
 * {
   /* background-color: var(--dark-bg-color); */
   color: var(--dark-font-color);
+  box-sizing: border-box;
 }
 
 button {
