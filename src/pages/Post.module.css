@@ -13,3 +13,8 @@
   font-size: 1.25rem;
   font-family: monospace;
 }
+
+.post .addCommentBtn {
+  background-color: var(--blue-bg-color);
+  color: var(--light-font-color);
+}

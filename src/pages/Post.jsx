@@ -27,6 +27,7 @@ function Post() {
               onClick={() => {
                 setShowCommentForm(true);
               }}
+              className={styles.addCommentBtn}
             >
               Add a Comment
             </button>

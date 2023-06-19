@@ -40,7 +40,9 @@ function CommentForm({ setShowCommentForm }) {
         id='comment'
         name='comment'
       />
-      <button type='submit'>submit</button>
+      <button type='submit' className={styles.submitBtn}>
+        submit
+      </button>
       <button
         onClick={() => {
           setShowCommentForm(false);

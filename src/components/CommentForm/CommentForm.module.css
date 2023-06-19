@@ -14,3 +14,8 @@
   text-transform: capitalize;
   align-self: center;
 }
+
+.commentForm .submitBtn {
+  color: var(--light-font-color);
+  background-color: var(--blue-bg-color);
+}

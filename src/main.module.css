@@ -135,6 +135,7 @@ table {
   --light-font-color: #eee;
   --dark-bg-color: #4f4f4f;
   --light-bg-color: #eee;
+  --blue-bg-color: rgb(0, 89, 255);
   --shadow: 0.25rem 0.5rem 0.5rem #565656;
 }
 

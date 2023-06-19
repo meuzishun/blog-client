@@ -15,15 +15,17 @@
 .comment .name {
   grid-area: name;
   border-radius: 0.25rem;
-  font-size: 2rem;
+  font-size: clamp(1.2rem, 2vw, 2rem);
   font-weight: bold;
   font-family: 'Handwritten';
-  margin-top: 0.75rem;
+  justify-self: start;
+  /* margin-top: clamp(0, 1vh, 0.75rem); */
 }
 
 .comment .content {
   grid-area: content;
   font-family: monospace;
+  font-size: clamp(1rem, 2vw, 2rem);
 }
 
 .comment .timestamp {
