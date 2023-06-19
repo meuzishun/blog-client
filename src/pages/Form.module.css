@@ -6,8 +6,7 @@
   align-items: stretch;
   max-width: 300px;
   margin: 2rem auto;
-  padding: 1rem;
-  gap: 1rem;
+  padding: 2rem;
   font-family: monospace;
   background-color: var(--light-bg-color);
 }
@@ -15,14 +14,19 @@
 .container > h2 {
   font-family: monospace;
   font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+.container form {
+  flex: 1;
 }
 
 .linkContainer {
-  margin-top: 4rem;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  padding: 2rem 0;
 }
 
 .linkContainer * {
