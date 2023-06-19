@@ -1,10 +1,11 @@
 import { useContext } from 'react';
 import { UserContext } from '../../../App';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import styles from './Nav.module.css';
 
 function Nav() {
   const { user, setUser } = useContext(UserContext);
+  const location = useLocation();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -16,11 +17,15 @@ function Nav() {
 
   return (
     <nav className={styles.nav}>
-      <Link to='/home'>Home</Link>
+      {location.pathname === '/home' ? null : <Link to='/home'>Home</Link>}
       {!user ? (
         <>
-          <Link to='register'>Register</Link>
-          <Link to='login'>Login</Link>
+          {location.pathname === '/register' ? null : (
+            <Link to='register'>Register</Link>
+          )}
+          {location.pathname === '/login' ? null : (
+            <Link to='login'>Login</Link>
+          )}
         </>
       ) : (
         <Link onClick={handleLogout}>Logout</Link>
