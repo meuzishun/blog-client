@@ -9,6 +9,10 @@
   backdrop-filter: blur(0.25rem);
 }
 
+.header > a:hover {
+  border-bottom-color: transparent;
+}
+
 .header h1 {
   font-family: 'Handwritten';
   color: var(--light-font-color);
