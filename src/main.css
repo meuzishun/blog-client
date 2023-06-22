@@ -360,7 +360,7 @@ input:focus {
   flex: 1;
 }
 
-.form-container .linkContainer {
+.form-container .link-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -368,13 +368,13 @@ input:focus {
   padding: 2rem 0;
 }
 
-.form-container .linkContainer * {
+.form-container .link-container * {
   font-family: monospace;
   font-size: 1rem;
 }
 
 @media (max-width: 600px) {
-  .form-container .linkContainer {
+  .form-container .link-container {
     flex-direction: column;
   }
 }
