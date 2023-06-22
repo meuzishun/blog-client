@@ -3,7 +3,7 @@ import { useFetch } from '../../hooks/useFetch';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useContext, useState, useEffect, useRef } from 'react';
 import { UserContext } from '../../App';
-import CommentList from '../../components/CommentList/CommentList';
+import CommentList from '../../components/comments/CommentList';
 
 export default function PostDetails() {
   const { user } = useContext(UserContext);

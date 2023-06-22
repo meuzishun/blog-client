@@ -1,7 +1,7 @@
 const apiRoot = import.meta.env.VITE_API_ROOT;
 import { useFetch } from '../../hooks/useFetch';
 import { useParams } from 'react-router-dom';
-import Comment from './subcomponents/Comment/Comment';
+import Comment from './Comment';
 
 function CommentList() {
   const params = useParams();

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { UserContext } from '../../App';
-import Nav from './subcomponents/Nav';
+import Nav from './Nav';
 
 function Header() {
   const { user } = useContext(UserContext);
