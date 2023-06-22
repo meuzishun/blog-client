@@ -1,11 +1,7 @@
-import styles from './Footer.module.css';
-
-function Footer() {
+export default function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer className='footer'>
       <p>Copyright &copy; meuzishun 2023</p>
     </footer>
   );
 }
-
-export default Footer;

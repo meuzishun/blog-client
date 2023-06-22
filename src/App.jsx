@@ -1,14 +1,23 @@
 const apiRoot = import.meta.env.VITE_API_ROOT;
 import { createContext, useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Welcome from './pages/Welcome';
-import Header from './components/Header/Header';
+import {
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+  RouterProvider,
+} from 'react-router-dom';
+
+// layouts
+import RootLayout from './layouts/RootLayout';
+import PostsLayout from './layouts/PostsLayout';
+
+// pages
 import Home from './pages/Home';
+import Posts from './pages/posts/Posts';
+import PostDetails from './pages/posts/PostDetails';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import Post from './pages/Post';
-import Footer from './components/Footer/Footer';
-import styles from './App.module.css';
+import NotFound from './pages/NotFound';
 
 export const UserContext = createContext(null);
 
@@ -41,25 +50,24 @@ export default function App() {
     getUser();
   }, []);
 
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path='/' element={<RootLayout />}>
+        <Route index element={<Home />} />
+        <Route path='posts' element={<PostsLayout />}>
+          <Route index element={<Posts />} />
+          <Route path=':postId' element={<PostDetails />} />
+        </Route>
+        <Route path='register' element={<Register />} />
+        <Route path='login' element={<Login />} />
+        <Route path='*' element={<NotFound />} />
+      </Route>
+    )
+  );
+
   return (
-    <div className={styles.app}>
-      <UserContext.Provider value={{ user, setUser }}>
-        <Router>
-          <Header />
-          <Routes>
-            <Route path='/' element={<Welcome />} />
-            <Route path='/home' element={<Home />} />
-            <Route path='/post/:postId' element={<Post />} />
-            {!user ? (
-              <>
-                <Route path='/register' element={<Register />} />
-                <Route path='/login' element={<Login />} />
-              </>
-            ) : null}
-          </Routes>
-        </Router>
-        <Footer />
-      </UserContext.Provider>
-    </div>
+    <UserContext.Provider value={{ user, setUser }}>
+      <RouterProvider router={router} />
+    </UserContext.Provider>
   );
 }

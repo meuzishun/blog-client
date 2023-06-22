@@ -1,14 +1,13 @@
 import PropTypes from 'prop-types';
-import styles from './Comment.module.css';
 
 function Comment({ comment }) {
   return (
-    <div className={styles.comment}>
-      <p className={styles.name}>
+    <div className='comment'>
+      <p className='name'>
         {comment.author.firstName} {comment.author.lastName} -
       </p>
-      <p className={styles.content}>{comment.content}</p>
-      <p className={styles.timestamp}>
+      <p className='content'>{comment.content}</p>
+      <p className='timestamp'>
         {new Date(comment.timestamp).toLocaleString()}
       </p>
     </div>

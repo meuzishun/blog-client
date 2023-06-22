@@ -1,19 +1,13 @@
 import { useContext } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { UserContext } from '../../App';
-import styles from './Header.module.css';
 import Nav from './subcomponents/Nav';
 
 function Header() {
   const { user } = useContext(UserContext);
-  const location = useLocation();
-
-  if (location.pathname === '/') {
-    return null;
-  }
 
   return (
-    <header className={styles.header}>
+    <header className='header'>
       <Link to='/'>
         <h1>You&apos;re Gonna Make Me Blog</h1>
       </Link>

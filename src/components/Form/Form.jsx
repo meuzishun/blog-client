@@ -1,7 +1,6 @@
 const apiRoot = import.meta.env.VITE_API_ROOT;
 import PropTypes from 'prop-types';
 import FormInput from './subcomponents/FormInput/FormInput';
-import styles from './Form.module.css';
 import { useState, useContext, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../App';
@@ -45,7 +44,7 @@ function Form({ type }) {
 
   return (
     <form
-      className={styles.form}
+      className='form'
       onChange={handleFormChange}
       onSubmit={handleFormSubmit}
     >

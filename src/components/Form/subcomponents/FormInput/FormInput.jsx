@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import styles from './FormInput.module.css';
 import { useState } from 'react';
 
 function FormInput({ type, id, name, label, forwardedRef }) {
@@ -10,7 +9,7 @@ function FormInput({ type, id, name, label, forwardedRef }) {
   };
 
   return (
-    <div className={styles.formInput}>
+    <div className='formInput'>
       <label htmlFor={id}>{label}</label>
       <input
         type={type}
