@@ -503,7 +503,8 @@ input:focus {
   font-family: monospace;
 }
 
-.singlePost .login-btn {
+.singlePost .login-btn,
+.singlePost .add-comment-btn {
   font-size: 1.05rem;
   color: var(--light-font-color);
   background-color: var(--blue-bg-color);

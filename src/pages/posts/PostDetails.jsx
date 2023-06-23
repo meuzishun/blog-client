@@ -78,7 +78,7 @@ export default function PostDetails() {
               onClick={() => {
                 setShowCommentForm(true);
               }}
-              className='addCommentBtn'
+              className='add-comment-btn'
             >
               Add a Comment
             </button>
