@@ -174,14 +174,16 @@ label {
   font-family: monospace;
 }
 
-input {
+input,
+textarea {
   padding: 0.5rem 0.5rem;
-  font-size: clamp(1rem, 3vw, 1.2rem);
+  font-size: clamp(0.85rem, 2vw, 1rem);
   font-family: monospace;
   border: none;
 }
 
-input:focus {
+input:focus,
+textarea:focus {
   outline: none;
 }
 
@@ -519,8 +521,9 @@ input:focus {
   justify-content: center;
 }
 
-.commentForm input {
+.commentForm textarea {
   width: 100%;
+  resize: none;
 }
 
 .commentForm button {

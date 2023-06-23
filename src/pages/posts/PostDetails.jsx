@@ -17,7 +17,7 @@ export default function PostDetails() {
     if (commentInput.current) {
       commentInput.current.focus();
     }
-  }, []);
+  }, [showCommentForm]);
 
   if (error) {
     return <div>Error: {error}</div>;
@@ -84,13 +84,14 @@ export default function PostDetails() {
             </button>
           ) : (
             <form className='commentForm' onSubmit={handleCommentSubmit}>
-              <input
+              <textarea
                 type='text'
                 placeholder='type a comment'
                 id='comment'
                 name='comment'
+                rows='5'
                 ref={commentInput}
-              />
+              ></textarea>
               <button type='submit' className='submitBtn'>
                 submit
               </button>
