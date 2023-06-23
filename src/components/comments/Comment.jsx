@@ -4,7 +4,7 @@ function Comment({ comment }) {
   return (
     <div className='comment'>
       <p className='name'>
-        {comment.author.firstName} {comment.author.lastName} -
+        {comment.author.firstName} {comment.author.lastName}
       </p>
       <p className='content'>{comment.content}</p>
       <p className='timestamp'>

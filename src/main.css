@@ -533,6 +533,10 @@ input:focus {
   background-color: var(--blue-bg-color);
 }
 
+.commentForm .cancelBtn {
+  background-color: #fff;
+}
+
 /* COMMENT LIST */
 .firstCommentMessage {
   text-align: center;
@@ -564,16 +568,19 @@ input:focus {
 .comment .name {
   grid-area: name;
   border-radius: 0.25rem;
-  font-size: clamp(1.2rem, 2vw, 2rem);
-  font-weight: bold;
-  font-family: 'Handwritten';
+  padding: 0.25rem 0.5rem;
+  background: #fff;
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  font-family: monospace;
   justify-self: start;
+  align-self: start;
 }
 
 .comment .content {
   grid-area: content;
   font-family: monospace;
-  font-size: clamp(1rem, 2vw, 2rem);
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  line-height: 1.5rem;
 }
 
 .comment .timestamp {

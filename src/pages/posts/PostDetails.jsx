@@ -95,6 +95,7 @@ export default function PostDetails() {
                 submit
               </button>
               <button
+                className='cancelBtn'
                 onClick={() => {
                   setShowCommentForm(false);
                 }}
