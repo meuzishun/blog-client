@@ -68,7 +68,9 @@ export default function PostDetails() {
       </div>
       <p>{data.post.content}</p>
       {!user ? (
-        <button onClick={handleLoginClick}>Login to leave a comment</button>
+        <button className='login-btn' onClick={handleLoginClick}>
+          Login to leave a comment
+        </button>
       ) : (
         <>
           {!showCommentForm ? (

@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { UserContext } from '../../App';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 
-function Nav() {
+export default function Nav() {
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -15,18 +15,26 @@ function Nav() {
 
   return (
     <nav className='nav'>
-      <NavLink to='/'>Home</NavLink>
-      <NavLink to='posts'>Posts</NavLink>
+      <NavLink to='/'>
+        <p>Home</p>
+      </NavLink>
+      <NavLink to='posts'>
+        <p>Posts</p>
+      </NavLink>
       {!user ? (
         <>
-          <NavLink to='register'>Register</NavLink>
-          <NavLink to='login'>Login</NavLink>
+          <NavLink to='register'>
+            <p>Register</p>
+          </NavLink>
+          <NavLink to='login'>
+            <p>Login</p>
+          </NavLink>
         </>
       ) : (
-        <Link onClick={handleLogout}>Logout</Link>
+        <Link onClick={handleLogout}>
+          <p>Logout</p>
+        </Link>
       )}
     </nav>
   );
 }
-
-export default Nav;
