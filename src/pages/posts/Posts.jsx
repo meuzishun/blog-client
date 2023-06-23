@@ -15,7 +15,7 @@ export default function Posts() {
   }
 
   return (
-    <div className='blogs'>
+    <div className='posts'>
       {data.posts.map((post) => {
         const formattedDate = new Date(post.timestamp)
           .toLocaleString()

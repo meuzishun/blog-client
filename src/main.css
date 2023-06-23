@@ -402,8 +402,8 @@ textarea:focus {
   gap: 0.25rem;
 }
 
-/* BLOGS STYLES */
-.blogs {
+/* POSTS STYLES */
+.posts {
   display: flex;
   flex-direction: column;
   align-items: center;
