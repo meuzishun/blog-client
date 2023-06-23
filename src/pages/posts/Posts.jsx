@@ -22,19 +22,21 @@ export default function Posts() {
           .split(',');
 
         return (
-          <div className='post' key={post.id}>
-            <h2>{post.title}</h2>
-            <div className='details'>
-              <p>
-                by {post.author.firstName} {post.author.lastName}
-              </p>
-              <p>
-                {formattedDate[0]}, {formattedDate[1]}
-              </p>
+          <Link to={post._id} key={post.id}>
+            <div className='post'>
+              <h2>{post.title}</h2>
+              <div className='details'>
+                <p>
+                  by {post.author.firstName} {post.author.lastName}
+                </p>
+                <p>
+                  {formattedDate[0]}, {formattedDate[1]}
+                </p>
+              </div>
+              <p>{post.content}</p>
+              <p className='continue'>Continue reading</p>
             </div>
-            <p>{post.content}</p>
-            <Link to={post._id}>Continue reading</Link>
-          </div>
+          </Link>
         );
       })}
     </div>

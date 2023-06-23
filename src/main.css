@@ -456,14 +456,16 @@ textarea:focus {
   font-size: clamp(0.8rem, 2vw, 1rem);
 }
 
-.post a {
+.post .continue {
   font-family: monospace;
   width: max-content;
   align-self: center;
   margin: 1rem;
+  text-indent: 0;
+  font-size: 0.85rem;
 }
 
-.post a:hover {
+.post:hover .continue {
   border-bottom: 1px solid var(--dark-font-color);
 }
 
