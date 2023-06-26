@@ -30,7 +30,7 @@ function Form({ type }) {
     localStorage.setItem('token', data.jwt.token);
     localStorage.setItem('user', userString);
     setUser(data.user);
-    navigate(-1);
+    navigate('/posts');
   };
 
   useEffect(() => {
