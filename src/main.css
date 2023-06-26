@@ -407,7 +407,6 @@ textarea:focus {
   margin: 3rem auto;
 }
 
-/* BLOG STYLES */
 .post {
   display: flex;
   flex-direction: column;
@@ -433,9 +432,6 @@ textarea:focus {
   width: max-content;
   align-self: flex-end;
   font-size: var(--font-size-xs);
-}
-
-.post .details p {
 }
 
 .post > p {
@@ -484,9 +480,6 @@ textarea:focus {
   flex-direction: column;
   text-align: right;
   gap: 0.25rem;
-}
-
-.singlePost .details p {
 }
 
 .singlePost > p {
