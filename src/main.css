@@ -137,6 +137,14 @@ table {
   --light-bg-color: #eee;
   --blue-bg-color: rgb(0, 89, 255);
   --shadow: 0.25rem 0.5rem 0.5rem #565656;
+  --font-size-xxs: 0.75rem;
+  --font-size-xs: 0.8rem;
+  --font-size-xs-res: clamp(0.85rem, 2vw, 1rem);
+  --font-size-sm: 1rem;
+  --font-size-md: 1.25rem;
+  --font-size-md-res: clamp(1rem, 2vw, 1.25rem);
+  --font-size-lg: 2rem;
+  --font-size-lg-res: clamp(1.5rem, 3vw, 2rem);
 }
 
 @font-face {
@@ -144,14 +152,10 @@ table {
   src: url('./fonts/Zeyada/Zeyada-Regular.ttf');
 }
 
-* {
-  color: var(--dark-font-color);
-  box-sizing: border-box;
-}
-
-/* body tag? main font style? */
 html * {
+  box-sizing: border-box;
   font-family: monospace;
+  color: var(--dark-font-color);
 }
 
 button {
@@ -173,13 +177,13 @@ a {
 
 label {
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: var(--font-size-xs);
 }
 
 input,
 textarea {
   padding: 0.5rem 0.5rem;
-  font-size: clamp(0.85rem, 2vw, 1rem);
+  font-size: var(--font-size-xs-res);
   border: none;
 }
 
@@ -222,7 +226,7 @@ textarea:focus {
   flex: 1;
   text-align: center;
   color: var(--light-font-color);
-  font-size: 2rem;
+  font-size: var(--font-size-lg);
 }
 
 @media (max-width: 600px) {
@@ -265,7 +269,7 @@ textarea:focus {
 }
 
 .nav a p {
-  font-size: clamp(1rem, 2vw, 1.2rem);
+  font-size: var(--font-size-md-res);
   color: var(--light-font-color);
 }
 
@@ -304,7 +308,7 @@ textarea:focus {
 
 .home .hero .header p {
   color: var(--dark-font-color);
-  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-size: var(--font-size-md-res);
 }
 
 .home .hero .header h1 {
@@ -315,7 +319,7 @@ textarea:focus {
 }
 
 .home .hero .header .subheading {
-  font-size: clamp(1rem, 2vw, 1.5rem);
+  font-size: var(--font-size-md-res);
   text-align: center;
 }
 
@@ -326,7 +330,7 @@ textarea:focus {
 }
 
 .home .hero nav a {
-  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-size: var(--font-size-lg-res);
   border-bottom: 3px solid transparent;
   margin: 1vh 3vw;
 }
@@ -346,7 +350,7 @@ textarea:focus {
 }
 
 .form-container > h2 {
-  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-size: var(--font-size-lg-res);
   margin-bottom: 2rem;
 }
 
@@ -363,7 +367,7 @@ textarea:focus {
 }
 
 .form-container .link-container * {
-  font-size: 1rem;
+  font-size: var(--font-size-sm);
 }
 
 @media (max-width: 600px) {
@@ -383,7 +387,7 @@ textarea:focus {
 .form button {
   text-transform: capitalize;
   align-self: center;
-  font-size: 1.25rem;
+  font-size: var(--font-size-md);
   background-color: rgb(0, 89, 255);
   color: var(--light-font-color);
 }
@@ -421,7 +425,7 @@ textarea:focus {
 }
 
 .post h2 {
-  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-size: var(--font-size-lg-res);
   border-bottom: 1px solid var(--light-font-color);
   padding: 1rem 0;
 }
@@ -429,7 +433,7 @@ textarea:focus {
 .post .details {
   width: max-content;
   align-self: flex-end;
-  font-size: 0.8rem;
+  font-size: var(--font-size-xs);
 }
 
 .post .details p {
@@ -441,7 +445,7 @@ textarea:focus {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-indent: 1.5rem;
-  font-size: clamp(0.8rem, 2vw, 1rem);
+  font-size: var(--font-size-xs-res);
 }
 
 .post .continue {
@@ -449,7 +453,9 @@ textarea:focus {
   align-self: center;
   margin: 1rem;
   text-indent: 0;
-  font-size: 0.85rem;
+  font-size: var(--font-size-xs);
+  padding: 0.25rem 0;
+  border-bottom: 1px solid transparent;
 }
 
 .post:hover .continue {
@@ -465,13 +471,13 @@ textarea:focus {
   padding-bottom: 3rem;
   border-bottom: 1px solid var(--light-font-color);
   background-color: var(--light-bg-color);
-  padding: clamp(1rem, 2vw, 3rem);
+  padding: clamp(3rem, 12vw, 6rem) clamp(1rem, 6vw, 4rem);
   max-width: 900px;
   margin: 0 auto;
 }
 
 .singlePost h2 {
-  font-size: clamp(2rem, 2vh, 2.5rem);
+  font-size: var(--font-size-lg-res);
 }
 
 .singlePost .details {
@@ -487,13 +493,14 @@ textarea:focus {
 .singlePost > p {
   text-indent: 4rem;
   margin-top: 2rem;
-  font-size: clamp(1rem, 2vh, 1.25rem);
+  font-size: var(--font-size-md-res);
   line-height: 2rem;
 }
 
 .singlePost .login-btn,
 .singlePost .add-comment-btn {
-  font-size: 1.05rem;
+  margin: 2rem 0;
+  font-size: var(--font-size-sm);
   color: var(--light-font-color);
   background-color: var(--blue-bg-color);
   align-self: center;
@@ -529,7 +536,7 @@ textarea:focus {
 /* COMMENT LIST */
 .firstCommentMessage {
   text-align: center;
-  font-size: 2rem;
+  font-size: var(--font-size-lg);
 }
 
 .commentList {
@@ -550,7 +557,7 @@ textarea:focus {
   gap: 0.5rem;
   padding: 0.5rem;
   align-items: center;
-  font-size: 1.25rem;
+  font-size: var(--font-size-md);
   background-color: var(--light-bg-color);
 }
 
@@ -559,20 +566,20 @@ textarea:focus {
   border-radius: 0.25rem;
   padding: 0.25rem 0.5rem;
   background: #fff;
-  font-size: clamp(0.85rem, 2vw, 1rem);
+  font-size: var(--font-size-xs-res);
   justify-self: start;
   align-self: start;
 }
 
 .comment .content {
   grid-area: content;
-  font-size: clamp(0.85rem, 2vw, 1rem);
+  font-size: var(--font-size-xs-res);
   line-height: 1.5rem;
 }
 
 .comment .timestamp {
   grid-area: time;
-  font-size: 0.75rem;
+  font-size: var(--font-size-xxs);
   text-align: right;
 }
 
