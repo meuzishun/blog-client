@@ -299,28 +299,27 @@ textarea:focus {
   max-width: 85vw;
 }
 
-.home .hero .header {
+.home .hero .heading {
   background: none;
   display: flex;
   flex-direction: column;
   gap: clamp(1rem, 10vh, 2rem);
 }
 
-.home .hero .header p {
-  color: var(--dark-font-color);
+.home .hero .heading p {
   font-size: var(--font-size-md-res);
 }
 
-.home .hero .header h1 {
-  color: var(--dark-font-color);
+.home .hero .heading h1 {
   font-size: clamp(4rem, 10vw, 6rem);
   font-family: 'Handwritten';
   text-align: center;
 }
 
-.home .hero .header .subheading {
+.home .hero .heading .subheading {
   font-size: var(--font-size-md-res);
   text-align: center;
+  margin-bottom: 2rem;
 }
 
 .home .hero nav {
