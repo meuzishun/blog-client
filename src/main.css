@@ -147,6 +147,10 @@ table {
 * {
   color: var(--dark-font-color);
   box-sizing: border-box;
+}
+
+/* body tag? main font style? */
+html * {
   font-family: monospace;
 }
 
@@ -154,7 +158,6 @@ button {
   padding: 0.5rem 1rem;
   border: none;
   border-radius: 0.25rem;
-  font-family: monospace;
 }
 
 button:hover,
@@ -171,14 +174,12 @@ a {
 label {
   text-transform: uppercase;
   font-size: 0.8rem;
-  font-family: monospace;
 }
 
 input,
 textarea {
   padding: 0.5rem 0.5rem;
   font-size: clamp(0.85rem, 2vw, 1rem);
-  font-family: monospace;
   border: none;
 }
 
@@ -222,7 +223,6 @@ textarea:focus {
   text-align: center;
   color: var(--light-font-color);
   font-size: 2rem;
-  font-family: 'Handwritten';
 }
 
 @media (max-width: 600px) {
@@ -242,7 +242,6 @@ textarea:focus {
 .nav a,
 .nav a:active,
 .nav a:visited {
-  font-family: monospace;
   text-decoration: none;
   padding: 0 0.5rem;
   border-radius: 0.25rem;
@@ -266,7 +265,6 @@ textarea:focus {
 }
 
 .nav a p {
-  font-family: monospace;
   font-size: clamp(1rem, 2vw, 1.2rem);
   color: var(--light-font-color);
 }
@@ -306,7 +304,6 @@ textarea:focus {
 
 .home .hero .header p {
   color: var(--dark-font-color);
-  font-family: monospace;
   font-size: clamp(1rem, 2vw, 1.5rem);
 }
 
@@ -319,7 +316,6 @@ textarea:focus {
 
 .home .hero .header .subheading {
   font-size: clamp(1rem, 2vw, 1.5rem);
-  font-family: monospace;
   text-align: center;
 }
 
@@ -331,7 +327,6 @@ textarea:focus {
 
 .home .hero nav a {
   font-size: clamp(1.25rem, 3vw, 2rem);
-  font-family: monospace;
   border-bottom: 3px solid transparent;
   margin: 1vh 3vw;
 }
@@ -347,12 +342,10 @@ textarea:focus {
   width: max-content;
   margin: clamp(0.8rem, 2vw, 2rem) auto;
   padding: 2rem;
-  font-family: monospace;
   background-color: var(--light-bg-color);
 }
 
 .form-container > h2 {
-  font-family: monospace;
   font-size: clamp(1.25rem, 3vw, 2rem);
   margin-bottom: 2rem;
 }
@@ -370,7 +363,6 @@ textarea:focus {
 }
 
 .form-container .link-container * {
-  font-family: monospace;
   font-size: 1rem;
 }
 
@@ -432,18 +424,15 @@ textarea:focus {
   font-size: clamp(1.5rem, 3vw, 2rem);
   border-bottom: 1px solid var(--light-font-color);
   padding: 1rem 0;
-  font-family: monospace;
 }
 
 .post .details {
   width: max-content;
   align-self: flex-end;
   font-size: 0.8rem;
-  font-family: monospace;
 }
 
 .post .details p {
-  font-family: monospace;
 }
 
 .post > p {
@@ -452,12 +441,10 @@ textarea:focus {
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-indent: 1.5rem;
-  font-family: monospace;
   font-size: clamp(0.8rem, 2vw, 1rem);
 }
 
 .post .continue {
-  font-family: monospace;
   width: max-content;
   align-self: center;
   margin: 1rem;
@@ -485,7 +472,6 @@ textarea:focus {
 
 .singlePost h2 {
   font-size: clamp(2rem, 2vh, 2.5rem);
-  font-family: monospace;
 }
 
 .singlePost .details {
@@ -496,7 +482,6 @@ textarea:focus {
 }
 
 .singlePost .details p {
-  font-family: monospace;
 }
 
 .singlePost > p {
@@ -504,7 +489,6 @@ textarea:focus {
   margin-top: 2rem;
   font-size: clamp(1rem, 2vh, 1.25rem);
   line-height: 2rem;
-  font-family: monospace;
 }
 
 .singlePost .login-btn,
@@ -576,14 +560,12 @@ textarea:focus {
   padding: 0.25rem 0.5rem;
   background: #fff;
   font-size: clamp(0.85rem, 2vw, 1rem);
-  font-family: monospace;
   justify-self: start;
   align-self: start;
 }
 
 .comment .content {
   grid-area: content;
-  font-family: monospace;
   font-size: clamp(0.85rem, 2vw, 1rem);
   line-height: 1.5rem;
 }
@@ -592,7 +574,6 @@ textarea:focus {
   grid-area: time;
   font-size: 0.75rem;
   text-align: right;
-  font-family: monospace;
 }
 
 /* FOOTER STYLES */
@@ -607,5 +588,4 @@ textarea:focus {
 
 .footer p {
   color: var(--light-font-color);
-  font-family: monospace;
 }
