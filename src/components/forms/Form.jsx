@@ -30,7 +30,18 @@ function Form({ type }) {
     localStorage.setItem('token', data.jwt.token);
     localStorage.setItem('user', userString);
     setUser(data.user);
-    navigate('/posts');
+
+    // Check if there is a "from" location in the search params
+    const searchParams = new URLSearchParams(window.location.search);
+    const from = searchParams.get('from');
+
+    if (from) {
+      // Redirect the user back to the "from" location
+      navigate(from);
+    } else {
+      // Redirect the user to a default location
+      navigate('/posts');
+    }
   };
 
   useEffect(() => {

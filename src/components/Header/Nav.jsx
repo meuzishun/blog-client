@@ -6,6 +6,11 @@ export default function Nav() {
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
+  const handleNavbarLogin = () => {
+    // Redirect the user to a specific page after login
+    navigate('/dashboard');
+  };
+
   const handleLogout = () => {
     console.log('Logging out...');
     localStorage.clear();
@@ -23,10 +28,10 @@ export default function Nav() {
       </NavLink>
       {!user ? (
         <>
-          <NavLink to='register'>
+          <NavLink to='register' onClick={handleNavbarLogin}>
             <p>Register</p>
           </NavLink>
-          <NavLink to='login'>
+          <NavLink to='login' onClick={handleNavbarLogin}>
             <p>Login</p>
           </NavLink>
         </>
