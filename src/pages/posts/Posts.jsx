@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 
 export default function Posts() {
   // TODO: replace this...
-  const [data, error] = useFetch(apiRoot + '/posts');
+  const [data, error] = useFetch(apiRoot + '/posts', {
+    headers: {
+      Authorization: localStorage.getItem('token'),
+    },
+  });
 
   if (error) {
     return <div>Error: {error}</div>;
