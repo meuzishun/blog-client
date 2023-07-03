@@ -401,7 +401,7 @@ textarea:focus {
 .posts {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 3rem;
   max-width: 600px;
   margin: 3rem auto;
@@ -414,7 +414,7 @@ textarea:focus {
   padding: clamp(0.5rem, 2vh, 1rem) clamp(1rem, 3vh, 2rem);
   background-color: var(--light-bg-color);
   transition: all 250ms ease-in-out;
-  max-width: 95vw;
+  max-width: 100vw;
 }
 
 .post:hover {
