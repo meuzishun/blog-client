@@ -28,7 +28,7 @@ function CommentList() {
         <p className='firstCommentMessage'>Be the first to comment!</p>
       ) : (
         data.comments.map((comment) => (
-          <Comment key={comment.id} comment={comment} />
+          <Comment key={comment._id} comment={comment} />
         ))
       )}
     </div>

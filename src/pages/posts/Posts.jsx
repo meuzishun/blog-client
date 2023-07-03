@@ -26,7 +26,7 @@ export default function Posts() {
           .split(',');
 
         return (
-          <Link to={post._id} key={post.id}>
+          <Link to={post._id} key={post._id}>
             <div className='post'>
               <h2>{post.title}</h2>
               <div className='details'>
