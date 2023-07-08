@@ -1,4 +1,4 @@
-const apiRoot = import.meta.env.VITE_API_ROOT;
+const apiRoot = 'https://scary-train-deer.cyclic.app';
 import { useFetch } from '../../hooks/useFetch';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useContext, useState, useEffect, useRef } from 'react';
