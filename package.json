@@ -2,7 +2,7 @@
   "name": "blog-client",
   "private": true,
   "version": "0.0.0",
-  "homepage": "http://meuzishun.github.io/blog-client",
+  "homepage": "https://meuzishun.github.io/blog-client",
   "type": "module",
   "scripts": {
     "dev": "vite",
