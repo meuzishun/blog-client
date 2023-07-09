@@ -52,7 +52,7 @@ export default function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path='/' element={<RootLayout />}>
+      <Route path='/blog-client/' element={<RootLayout />}>
         <Route index element={<Home />} />
         <Route path='posts' element={<PostsLayout />}>
           <Route index element={<Posts />} />
