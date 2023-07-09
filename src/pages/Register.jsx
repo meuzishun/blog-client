@@ -8,7 +8,7 @@ function Register() {
       <Form type='register' />
       <div className='link-container'>
         <p>Already have an account?</p>
-        <Link to='login'>Login</Link>
+        <Link to='/login'>Login</Link>
       </div>
     </div>
   );

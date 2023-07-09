@@ -61,9 +61,9 @@ export default function App() {
         <Route path='register' element={<Register />} />
         <Route path='login' element={<Login />} />
         <Route path='*' element={<NotFound />} />
-      </Route>,
-      { basename: '/blog-client' }
-    )
+      </Route>
+    ),
+    { basename: '/blog-client' }
   );
 
   return (
