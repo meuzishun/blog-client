@@ -20,18 +20,18 @@ export default function Nav() {
 
   return (
     <nav className='nav'>
-      <NavLink to='/blog-client/'>
+      <NavLink to='/'>
         <p>Home</p>
       </NavLink>
-      <NavLink to='/blog-client/posts'>
+      <NavLink to='posts'>
         <p>Posts</p>
       </NavLink>
       {!user ? (
         <>
-          <NavLink to='/blog-client/register' onClick={handleNavbarLogin}>
+          <NavLink to='register' onClick={handleNavbarLogin}>
             <p>Register</p>
           </NavLink>
-          <NavLink to='/blog-client/login' onClick={handleNavbarLogin}>
+          <NavLink to='login' onClick={handleNavbarLogin}>
             <p>Login</p>
           </NavLink>
         </>

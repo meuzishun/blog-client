@@ -18,11 +18,11 @@ function Home() {
         <nav>
           {!user ? (
             <>
-              <Link to='/blog-client/register'>Register</Link>
-              <Link to='/blog-client/login'>Login</Link>
+              <Link to='register'>Register</Link>
+              <Link to='login'>Login</Link>
             </>
           ) : null}
-          <Link to='/blog-client/posts'>Start Reading</Link>
+          <Link to='posts'>Start Reading</Link>
         </nav>
       </div>
     </div>

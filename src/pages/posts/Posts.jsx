@@ -26,7 +26,7 @@ export default function Posts() {
           .split(',');
 
         return (
-          <Link to={'/blog-client/posts/' + post._id} key={post._id}>
+          <Link to={'posts/' + post._id} key={post._id}>
             <div className='post'>
               <h2>{post.title}</h2>
               <div className='details'>

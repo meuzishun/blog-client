@@ -8,7 +8,7 @@ function Login() {
       <Form type='login' />
       <div className='link-container'>
         <p>Don&apos;t have an account?</p>
-        <Link to='/blog-client/register'>Sign up</Link>
+        <Link to='register'>Sign up</Link>
       </div>
     </div>
   );
