@@ -55,7 +55,7 @@ export default function PostDetails() {
       console.log(response);
     }
 
-    window.location.reload();
+    window.location.reload(true);
   };
 
   return (
