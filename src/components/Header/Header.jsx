@@ -8,7 +8,7 @@ function Header() {
 
   return (
     <header className='header'>
-      <Link to='/'>
+      <Link to='/blog-client/'>
         <h1>You&apos;re Gonna Make Me Blog</h1>
       </Link>
       {!user ? null : <p>Hello {user.firstName}!</p>}
