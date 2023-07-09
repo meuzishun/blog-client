@@ -29,7 +29,7 @@ export default function PostDetails() {
 
   const handleLoginClick = () => {
     // add postId to params...
-    navigate(`/login?from=/posts/${params.postId}`);
+    navigate(`/blog-client/login?from=/posts/${params.postId}`);
   };
 
   const handleCommentSubmit = async (e) => {
