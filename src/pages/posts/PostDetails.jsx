@@ -57,6 +57,7 @@ export default function PostDetails() {
 
     if (response.ok) {
       window.location.reload(false);
+      navigate('/posts/' + params.postId);
     }
   };
 
