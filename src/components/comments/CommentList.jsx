@@ -1,4 +1,4 @@
-const apiRoot = 'https://scary-train-deer.cyclic.app';
+import { API_URI } from '../../api_uri';
 import { useFetch } from '../../hooks/useFetch';
 import { useParams } from 'react-router-dom';
 import Comment from './Comment';
@@ -6,7 +6,7 @@ import Comment from './Comment';
 function CommentList() {
   const params = useParams();
   const [data, error] = useFetch(
-    apiRoot + '/posts/' + params.postId + '/comments/',
+    API_URI + '/posts/' + params.postId + '/comments/',
     {
       headers: {
         Authorization: localStorage.getItem('token'),

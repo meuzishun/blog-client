@@ -1,10 +1,10 @@
-const apiRoot = 'https://scary-train-deer.cyclic.app';
+import { API_URI } from '../../api_uri';
 import { useFetch } from '../../hooks/useFetch';
 import { Link } from 'react-router-dom';
 
 export default function Posts() {
   // TODO: replace this...
-  const [data, error] = useFetch(apiRoot + '/posts', {
+  const [data, error] = useFetch(API_URI + '/posts', {
     headers: {
       Authorization: localStorage.getItem('token'),
     },

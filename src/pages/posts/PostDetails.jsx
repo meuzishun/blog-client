@@ -1,4 +1,4 @@
-const apiRoot = 'https://scary-train-deer.cyclic.app';
+import { API_URI } from '../../api_uri';
 import { useFetch } from '../../hooks/useFetch';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useContext, useState, useEffect, useRef } from 'react';
@@ -10,7 +10,7 @@ export default function PostDetails() {
   const [showCommentForm, setShowCommentForm] = useState(false);
   const params = useParams();
   const commentInput = useRef(null);
-  const [data, error] = useFetch(apiRoot + '/posts/' + params.postId);
+  const [data, error] = useFetch(API_URI + '/posts/' + params.postId);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export default function PostDetails() {
     };
 
     const response = await fetch(
-      apiRoot + '/posts/' + params.postId + '/comments',
+      API_URI + '/posts/' + params.postId + '/comments',
       {
         method: 'POST',
         headers: {

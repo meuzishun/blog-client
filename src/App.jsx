@@ -1,4 +1,4 @@
-const apiRoot = 'https://scary-train-deer.cyclic.app';
+import { API_URI } from './api_uri';
 import { createContext, useEffect, useState } from 'react';
 import {
   createBrowserRouter,
@@ -34,7 +34,7 @@ export default function App() {
         return;
       }
 
-      const response = await fetch(apiRoot + '/profile', {
+      const response = await fetch(API_URI + '/profile', {
         method: 'GET',
         headers: {
           Authorization: token,

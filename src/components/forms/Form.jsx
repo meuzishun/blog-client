@@ -1,4 +1,4 @@
-const apiRoot = 'https://scary-train-deer.cyclic.app';
+import { API_URI } from '../../api_uri';
 import PropTypes from 'prop-types';
 import FormInput from './FormInput';
 import { useState, useContext, useRef, useEffect } from 'react';
@@ -18,7 +18,7 @@ function Form({ type }) {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(apiRoot + '/' + type, {
+    const response = await fetch(API_URI + '/' + type, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
