@@ -1,8 +1,18 @@
 // const API_URI = 'https://scary-train-deer.cyclic.app';
-const API_URI = 'http://localhost:3000';
+export const API_URI = 'http://localhost:3000';
 
 export async function getPosts() {
   const response = await fetch(API_URI + '/posts', {
+    headers: {
+      Authorization: localStorage.getItem('token'),
+    },
+  });
+
+  return response;
+}
+
+export async function getPost(postId) {
+  const response = await fetch(API_URI + '/posts/' + postId, {
     headers: {
       Authorization: localStorage.getItem('token'),
     },
