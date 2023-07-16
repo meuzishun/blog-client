@@ -1,4 +1,4 @@
-import { API_URI } from '../../api_uri';
+import { API_URI } from '../../api/api_uri';
 import { useFetch } from '../../hooks/useFetch';
 import { Link } from 'react-router-dom';
 

@@ -1,4 +1,4 @@
-import { API_URI } from './api_uri';
+import { API_URI } from './api/api_uri';
 import { createContext, useEffect, useState } from 'react';
 import {
   createBrowserRouter,

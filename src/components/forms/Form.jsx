@@ -1,4 +1,4 @@
-import { API_URI } from '../../api_uri';
+import { API_URI } from '../../api/api_uri';
 import PropTypes from 'prop-types';
 import FormInput from './FormInput';
 import { useState, useContext, useRef, useEffect } from 'react';
