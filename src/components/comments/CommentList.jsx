@@ -27,9 +27,9 @@ function CommentList() {
       {data.comments.length < 1 ? (
         <p className='firstCommentMessage'>Be the first to comment!</p>
       ) : (
-        data.comments.map((comment) => (
-          <Comment key={comment._id} comment={comment} />
-        ))
+        data.comments
+          .sort((a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp))
+          .map((comment) => <Comment key={comment._id} comment={comment} />)
       )}
     </div>
   );
