@@ -1,26 +1,41 @@
-import { API_URI } from '../../api/api_uri';
-import { useFetch } from '../../hooks/useFetch';
+import { useEffect, useState } from 'react';
+import { getPosts } from '../../api/api';
 import { Link } from 'react-router-dom';
 
 export default function Posts() {
-  // TODO: replace this...
-  const [data, error] = useFetch(API_URI + '/posts', {
-    headers: {
-      Authorization: localStorage.getItem('token'),
-    },
-  });
+  const [posts, setPosts] = useState([]);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const loadPosts = async () => {
+    setIsLoading(true);
+    const response = await getPosts();
+
+    if (!response.ok) {
+      setError(response.statusText);
+    } else {
+      const data = await response.json();
+      setError(null);
+      setIsLoading(false);
+      setPosts(data.posts);
+    }
+  };
+
+  useEffect(() => {
+    loadPosts();
+  }, []);
 
   if (error) {
     return <div>Error: {error}</div>;
   }
 
-  if (!data) {
+  if (isLoading) {
     return <div>Loading...</div>;
   }
 
   return (
     <div className='posts'>
-      {data.posts.map((post) => {
+      {posts.map((post) => {
         const formattedDate = new Date(post.timestamp)
           .toLocaleString()
           .split(',');

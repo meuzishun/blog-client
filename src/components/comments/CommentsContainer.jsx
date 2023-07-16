@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import CommentList from './CommentList';
-import getComments from '../../api/getComments';
 import NewCommentForm from '../forms/NewCommentForm';
-import submitComment from '../../api/submitComment';
+import { getComments, submitComment } from '../../api/api';
 
 export default function CommentsContainer() {
   const params = useParams();
