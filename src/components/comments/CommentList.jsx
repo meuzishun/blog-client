@@ -1,33 +1,13 @@
-import { API_URI } from '../../api_uri';
-import { useFetch } from '../../hooks/useFetch';
-import { useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Comment from './Comment';
 
-function CommentList() {
-  const params = useParams();
-  const [data, error] = useFetch(
-    API_URI + '/posts/' + params.postId + '/comments/',
-    {
-      headers: {
-        Authorization: localStorage.getItem('token'),
-      },
-    }
-  );
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
-  if (!data) {
-    return <div>Loading...</div>;
-  }
-
+export default function CommentList({ comments }) {
   return (
     <div className='commentList'>
-      {data.comments.length < 1 ? (
+      {!comments || comments.length < 1 ? (
         <p className='firstCommentMessage'>Be the first to comment!</p>
       ) : (
-        data.comments
+        comments
           .sort((a, b) => Date.parse(b.timestamp) - Date.parse(a.timestamp))
           .map((comment) => <Comment key={comment._id} comment={comment} />)
       )}
@@ -35,4 +15,6 @@ function CommentList() {
   );
 }
 
-export default CommentList;
+CommentList.propTypes = {
+  comments: PropTypes.array,
+};

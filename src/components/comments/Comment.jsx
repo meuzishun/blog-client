@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-function Comment({ comment }) {
+export default function Comment({ comment }) {
   return (
     <div className='comment'>
       <p className='name'>
@@ -17,5 +17,3 @@ function Comment({ comment }) {
 Comment.propTypes = {
   comment: PropTypes.object.isRequired,
 };
-
-export default Comment;
