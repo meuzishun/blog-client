@@ -13,16 +13,18 @@ export default function PostDetails() {
   const navigate = useNavigate();
 
   const loadPost = async () => {
+    setError(null);
     setIsLoading(true);
     const response = await getPost(params.postId);
 
     if (!response.ok) {
       setError(response.statusText);
+      setIsLoading(false);
     } else {
       const data = await response.json();
+      setPost(data.post);
       setError(null);
       setIsLoading(false);
-      setPost(data.post);
     }
   };
 

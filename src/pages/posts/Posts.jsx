@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { getPosts } from '../../api/api';
 import { Link } from 'react-router-dom';
+import Loading from '../Loading';
+import Error from '../Error';
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
@@ -8,16 +10,18 @@ export default function Posts() {
   const [isLoading, setIsLoading] = useState(false);
 
   const loadPosts = async () => {
+    setError(null);
     setIsLoading(true);
     const response = await getPosts();
 
     if (!response.ok) {
       setError(response.statusText);
+      setIsLoading(false);
     } else {
       const data = await response.json();
+      setPosts(data.posts);
       setError(null);
       setIsLoading(false);
-      setPosts(data.posts);
     }
   };
 
@@ -26,11 +30,11 @@ export default function Posts() {
   }, []);
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <Error error={error} />;
   }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
 
   return (

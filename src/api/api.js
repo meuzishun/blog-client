@@ -30,14 +30,7 @@ export async function getComments(postId) {
     },
   });
 
-  if (!response.ok) {
-    console.log(response);
-  }
-
-  if (response.ok) {
-    const data = await response.json();
-    return data.comments;
-  }
+  return response;
 }
 
 export async function submitComment(comment, postId) {

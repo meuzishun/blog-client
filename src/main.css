@@ -588,3 +588,25 @@ textarea:focus {
 .footer p {
   color: var(--light-font-color);
 }
+
+.loading-message {
+  height: 100vh;
+  display: grid;
+  place-content: center;
+}
+
+.loading-message p {
+  font-size: 3rem;
+  color: white;
+}
+
+.error-page {
+  background-color: #fff;
+  padding: 3rem;
+}
+
+.error-page p {
+  font-size: 2rem;
+  color: black;
+  text-align: center;
+}

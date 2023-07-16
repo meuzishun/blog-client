@@ -5,7 +5,7 @@ import { useState, useContext, useRef, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../App';
 
-function Form({ type }) {
+export default function Form({ type }) {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
   const [formState, setFormState] = useState({});
@@ -97,5 +97,3 @@ function Form({ type }) {
 Form.propTypes = {
   type: PropTypes.string.isRequired,
 };
-
-export default Form;

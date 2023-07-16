@@ -7,11 +7,24 @@ import { getComments, submitComment } from '../../api/api';
 export default function CommentsContainer() {
   const params = useParams();
   const [comments, setComments] = useState([]);
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [showCommentForm, setShowCommentForm] = useState(false);
 
-  const refreshComments = async () => {
-    const data = await getComments(params.postId);
-    setComments(data);
+  const loadComments = async () => {
+    setError(null);
+    setIsLoading(true);
+    const response = await getComments(params.postId);
+
+    if (!response.ok) {
+      setError(response.statusText);
+      setIsLoading(false);
+    } else {
+      const data = await response.json();
+      setComments(data.comments);
+      setError(null);
+      setIsLoading(false);
+    }
   };
 
   const handleAddCommentClick = () => {
@@ -30,7 +43,7 @@ export default function CommentsContainer() {
     if (!response.ok) {
       console.log(response);
     } else {
-      refreshComments();
+      loadComments();
       setShowCommentForm(false);
     }
   };
@@ -40,7 +53,7 @@ export default function CommentsContainer() {
   };
 
   useEffect(() => {
-    refreshComments();
+    loadComments();
   }, []);
 
   return (
@@ -55,7 +68,7 @@ export default function CommentsContainer() {
           handleCommentCancel={handleCommentCancel}
         />
       )}
-      <CommentList comments={comments} />
+      <CommentList error={error} isLoading={isLoading} comments={comments} />
     </>
   );
 }
