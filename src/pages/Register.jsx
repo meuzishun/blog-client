@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
-import Form from '../components/forms/Form';
+import RegisterForm from '../components/forms/RegisterForm';
 
 function Register() {
   return (
     <div className='form-container'>
       <h2>Register</h2>
-      <Form type='register' />
+      <RegisterForm />
       <div className='link-container'>
         <p>Already have an account?</p>
         <Link to='/login'>Login</Link>
