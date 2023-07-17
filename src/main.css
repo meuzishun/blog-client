@@ -547,6 +547,16 @@ textarea:focus {
   gap: 2rem;
 }
 
+.commentLoading p {
+  width: 100%;
+  text-align: center;
+}
+
+.commentError p {
+  width: 100%;
+  text-align: center;
+}
+
 /* COMMENT STYLES */
 .comment {
   display: grid;
