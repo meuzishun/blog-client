@@ -511,6 +511,10 @@ textarea:focus {
   resize: none;
 }
 
+.commentForm .error-msg {
+  width: 100%;
+}
+
 .commentForm button {
   text-transform: capitalize;
   align-self: center;
@@ -523,6 +527,11 @@ textarea:focus {
 
 .commentForm .cancelBtn {
   background-color: #fff;
+}
+
+.commentForm .submitting-msg {
+  width: 100%;
+  text-align: center;
 }
 
 /* COMMENT LIST */

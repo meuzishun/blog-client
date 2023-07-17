@@ -41,6 +41,8 @@ function commentsReducer(state, action) {
     case 'cancel':
       return {
         ...state,
+        isSubmitting: false,
+        submitError: null,
         showCommentForm: false,
       };
     case 'submitting':
