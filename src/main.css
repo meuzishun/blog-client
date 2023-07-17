@@ -610,3 +610,11 @@ textarea:focus {
   color: black;
   text-align: center;
 }
+
+.error-msg {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  background-color: #fff;
+  color: red;
+}
