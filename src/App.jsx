@@ -1,4 +1,4 @@
-import { API_URI } from './api/api';
+import { getUser } from './api/api';
 import { createContext, useEffect, useState } from 'react';
 import {
   createBrowserRouter,
@@ -25,21 +25,21 @@ export default function App() {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const getUser = async () => {
+    const checkForUser = async () => {
       const token = localStorage.getItem('token');
 
       if (!token) {
         setUser(null);
-        localStorage.clear();
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
         return;
       }
 
-      const response = await fetch(API_URI + '/profile', {
-        method: 'GET',
-        headers: {
-          Authorization: token,
-        },
-      });
+      const response = await getUser(token);
+
+      if (!response.ok) {
+        return;
+      }
 
       const data = await response.json();
       const userString = JSON.stringify(data.user);
@@ -47,7 +47,7 @@ export default function App() {
       setUser(data.user);
     };
 
-    getUser();
+    checkForUser();
   }, []);
 
   const router = createBrowserRouter(
