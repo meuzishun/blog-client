@@ -369,6 +369,14 @@ textarea:focus {
   font-size: var(--font-size-sm);
 }
 
+.form-container .link-container a {
+  color: var(--blue-bg-color);
+}
+
+.form-container .link-container a:hover {
+  border-bottom-color: var(--blue-bg-color);
+}
+
 @media (max-width: 600px) {
   .form-container .link-container {
     flex-direction: column;
