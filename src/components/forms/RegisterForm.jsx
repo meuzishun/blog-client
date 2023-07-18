@@ -1,51 +1,100 @@
 import { submitRegister } from '../../api/api';
 import FormInput from './FormInput';
-import Loading from '../../pages/Loading';
-import { useState, useContext, useRef, useEffect } from 'react';
+import { useContext, useRef, useEffect, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../../App';
+
+const initialFormState = {
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: '',
+  error: null,
+  isLoading: false,
+};
+
+function formReducer(state, action) {
+  switch (action.type) {
+    case 'submit':
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case 'changeValue':
+      return {
+        ...state,
+        [action.field]: action.value,
+      };
+    case 'error':
+      return {
+        ...state,
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        isLoading: false,
+        error: action.error,
+      };
+    case 'success':
+      return {
+        ...state,
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+        isLoading: false,
+        error: null,
+      };
+    default:
+      return initialFormState;
+  }
+}
 
 export default function Form() {
   const navigate = useNavigate();
   const { setUser } = useContext(UserContext);
-  const [formState, setFormState] = useState({});
-  const [error, setError] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
+  const [state, dispatch] = useReducer(formReducer, initialFormState);
   const firstNameInputRef = useRef(null);
+  const lastNameInputRef = useRef(null);
+  const emailInputRef = useRef(null);
+  const passwordInputRef = useRef(null);
 
   const handleFormChange = (e) => {
-    setFormState({ ...formState, [e.target.name]: e.target.value });
+    dispatch({
+      type: 'changeValue',
+      field: e.target.name,
+      value: e.target.value,
+    });
   };
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
-    setError(null);
-    setIsLoading(true);
-    const response = await submitRegister(formState);
+    dispatch({ type: 'submit' });
+    const { firstName, lastName, email, password } = state;
+    const response = await submitRegister({
+      firstName,
+      lastName,
+      email,
+      password,
+    });
+    const data = await response.json();
 
     if (!response.ok) {
-      const data = await response.json();
-
       if ([401, 404].includes(response.status)) {
-        setError(data.message);
+        dispatch({ type: 'error', error: data.message });
       }
 
       if (response.status === 400) {
-        setError(data.errors[0].msg);
+        dispatch({ type: 'error', error: data.errors[0].msg });
       }
-
-      setIsLoading(false);
       return;
     }
 
-    const data = await response.json();
+    dispatch({ type: 'success' });
     const userString = JSON.stringify(data.user);
     localStorage.setItem('token', data.jwt.token);
     localStorage.setItem('user', userString);
     setUser(data.user);
-    setError(null);
-    setIsLoading(false);
 
     // Check if there is a "from" location in the search params
     const searchParams = new URLSearchParams(window.location.search);
@@ -61,12 +110,12 @@ export default function Form() {
   };
 
   useEffect(() => {
+    firstNameInputRef.current.value = '';
+    lastNameInputRef.current.value = '';
+    emailInputRef.current.value = '';
+    passwordInputRef.current.value = '';
     firstNameInputRef.current.focus();
-  }, [error]);
-
-  if (isLoading) {
-    return <Loading />;
-  }
+  }, [state.error]);
 
   return (
     <form
@@ -86,16 +135,28 @@ export default function Form() {
         id={'lastName'}
         name={'lastName'}
         label={'last name'}
+        forwardedRef={lastNameInputRef}
       />
-      <FormInput type={'email'} id={'email'} name={'email'} label={'email'} />
+      <FormInput
+        type={'email'}
+        id={'email'}
+        name={'email'}
+        label={'email'}
+        forwardedRef={emailInputRef}
+      />
       <FormInput
         type={'password'}
         id={'password'}
         name={'password'}
         label={'password'}
+        forwardedRef={passwordInputRef}
       />
-      <button>submit</button>
-      {error ? <p className='error-msg'>{error}</p> : null}
+      {state.isLoading ? (
+        <p className='loading-msg'>Loading...</p>
+      ) : (
+        <button>submit</button>
+      )}
+      {state.error ? <p className='error-msg'>{state.error}</p> : null}
     </form>
   );
 }
