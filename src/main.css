@@ -391,6 +391,17 @@ textarea:focus {
   color: var(--light-font-color);
 }
 
+.form .loading-msg {
+  text-transform: capitalize;
+  align-self: center;
+  font-size: var(--font-size-md);
+  background-color: var(--dark-bg-color);
+  color: var(--light-font-color);
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+}
+
 .formInput {
   display: flex;
   flex-direction: column;
