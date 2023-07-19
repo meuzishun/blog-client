@@ -6,6 +6,7 @@ import {
   Route,
   RouterProvider,
 } from 'react-router-dom';
+import jwtDecode from 'jwt-decode';
 
 // layouts
 import RootLayout from './layouts/RootLayout';
@@ -24,30 +25,44 @@ export const UserContext = createContext(null);
 export default function App() {
   const [user, setUser] = useState(null);
 
-  useEffect(() => {
-    const checkForUser = async () => {
-      const token = localStorage.getItem('token');
-
-      if (!token) {
-        setUser(null);
-        localStorage.removeItem('user');
-        localStorage.removeItem('token');
-        return;
-      }
-
-      const response = await getUser(token);
-
-      if (!response.ok) {
-        return;
-      }
-
-      const data = await response.json();
-      const userString = JSON.stringify(data.user);
-      localStorage.setItem('user', userString);
-      setUser(data.user);
+  const checkToken = async () => {
+    const reset = () => {
+      setUser(null);
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
     };
 
-    checkForUser();
+    const token = localStorage.getItem('token');
+
+    if (!token) {
+      reset();
+      return;
+    }
+
+    const decoded = jwtDecode(token);
+    const currentTime = Date.now() / 1000;
+    const isValid = decoded.exp > currentTime;
+
+    if (!isValid) {
+      reset();
+      return;
+    }
+
+    const response = await getUser(token);
+
+    if (!response.ok) {
+      reset();
+      return;
+    }
+
+    const data = await response.json();
+    const userString = JSON.stringify(data.user);
+    localStorage.setItem('user', userString);
+    setUser(data.user);
+  };
+
+  useEffect(() => {
+    checkToken();
   }, []);
 
   const router = createBrowserRouter(
@@ -67,7 +82,7 @@ export default function App() {
   );
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, checkToken }}>
       <RouterProvider router={router} />
     </UserContext.Provider>
   );

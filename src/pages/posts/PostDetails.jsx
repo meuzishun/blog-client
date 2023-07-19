@@ -38,7 +38,7 @@ function postReducer(state, action) {
 }
 
 export default function PostDetails() {
-  const { user } = useContext(UserContext);
+  const { user, checkToken } = useContext(UserContext);
   const params = useParams();
   const [state, dispatch] = useReducer(postReducer, initialPostState);
   const navigate = useNavigate();
@@ -57,6 +57,7 @@ export default function PostDetails() {
 
   useEffect(() => {
     loadPost();
+    checkToken();
   }, []);
 
   const handleLoginClick = () => {
