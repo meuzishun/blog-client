@@ -2,7 +2,7 @@ import { submitLogin } from '../../api/api';
 import FormInput from './FormInput';
 import { useContext, useRef, useEffect, useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { UserContext } from '../../App';
+import { UserContext } from '../../contexts/userContext';
 
 const initialFormState = {
   email: '',

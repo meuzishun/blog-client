@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { UserContext } from '../../App';
+import { UserContext } from '../../contexts/userContext';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 export default function Nav() {

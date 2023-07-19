@@ -1,9 +1,13 @@
-import { useContext } from 'react';
-import { UserContext } from '../App';
+import { useContext, useEffect } from 'react';
+import { UserContext } from '../contexts/userContext';
 import { Link } from 'react-router-dom';
 
 function Home() {
-  const { user } = useContext(UserContext);
+  const { user, checkToken } = useContext(UserContext);
+
+  useEffect(() => {
+    checkToken();
+  }, []);
 
   return (
     <div className='home'>

@@ -1,6 +1,6 @@
 import { useEffect, useContext, useReducer } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { UserContext } from '../../App';
+import { UserContext } from '../../contexts/userContext';
 import CommentsContainer from '../../components/comments/CommentsContainer';
 import { getPost } from '../../api/api';
 import Loading from '../Loading';
