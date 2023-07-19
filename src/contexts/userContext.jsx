@@ -8,25 +8,28 @@ const UserContext = createContext(null);
 function UserProvider({ children }) {
   const [user, setUser] = useState(null);
 
-  const checkToken = async () => {
-    const reset = () => {
-      setUser(null);
-      localStorage.removeItem('user');
-      localStorage.removeItem('token');
-    };
+  const reset = () => {
+    setUser(null);
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+  };
 
-    const token = localStorage.getItem('token');
-
-    if (!token) {
-      reset();
-      return;
-    }
-
+  const isValid = (token) => {
     const decoded = jwtDecode(token);
     const currentTime = Date.now() / 1000;
-    const isValid = decoded.exp > currentTime;
+    return decoded.exp > currentTime;
+  };
 
-    if (!isValid) {
+  const storeUser = (user) => {
+    const userString = JSON.stringify(user);
+    localStorage.setItem('user', userString);
+    setUser(user);
+  };
+
+  const checkToken = async () => {
+    const token = localStorage.getItem('token');
+
+    if (!token || !isValid(token)) {
       reset();
       return;
     }
@@ -39,9 +42,7 @@ function UserProvider({ children }) {
     }
 
     const data = await response.json();
-    const userString = JSON.stringify(data.user);
-    localStorage.setItem('user', userString);
-    setUser(data.user);
+    storeUser(data.user);
   };
 
   return (
