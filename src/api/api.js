@@ -1,4 +1,9 @@
-const API_URI = 'https://scary-train-deer.cyclic.app';
+// Cyclic
+// const API_URI = 'https://scary-train-deer.cyclic.app';
+
+// Adaptable
+const API_URI = 'https://youre-gonna-make-me-blog.adaptable.app';
+
 // For development
 // export const API_URI = 'http://localhost:3000';
 
